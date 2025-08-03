@@ -1,0 +1,25 @@
+{
+  "id": "tfr_01FCTS1XMKH9FF43CAFA4CXT3P",
+  "status": "Completed",
+  "amount": 75000,
+  "currency": "GBP",
+  "reason": "Covering dispute fees from 25th October",
+  "source": {
+    "accountId": "ac_3fe8398f-8cdb-43a3-9be2-806c4f84c327"
+  },
+  "destination": {
+    "accountId": "ac_3fe8398f-8cdb-43a3-9be2-806c4f84c326"
+  },
+  "errors": [
+    {
+      "code": "InsufficientSourceBalance",
+      "description": "The account did not have sufficient funds available to cover this transfer"
+    }
+  ],
+  "metadata": {
+    "orderId": "1",
+    "customerId": "123"
+  },
+  "createdTimestamp": 1470989538,
+  "lastUpdatedTimestamp": 1470989539
+}

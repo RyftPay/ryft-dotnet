@@ -1,0 +1,14 @@
+{
+  "id": "ps_01K07XVW98SFWWBB75JEMW3Q2V",
+  "amount": 11811,
+  "currency": "GBP",
+  "paymentType": "Standard",
+  "status": "PendingPayment",
+  "statementDescriptor": {
+    "descriptor": "Ryft Ltd",
+    "city": "Manchester"
+  },
+  "refundedAmount": 0,
+  "createdTimestamp": 1752612860,
+  "lastUpdatedTimestamp": 1752612860
+}

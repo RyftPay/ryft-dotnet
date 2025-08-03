@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+dotnet format --verify-no-changes

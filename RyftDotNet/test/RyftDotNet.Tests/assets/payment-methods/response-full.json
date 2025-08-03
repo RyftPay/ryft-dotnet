@@ -1,0 +1,26 @@
+{
+  "id": "pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+  "type": "Card",
+  "card": {
+    "scheme": "Mastercard",
+    "last4": "4444",
+    "expiryMonth": "10",
+    "expiryYear": "2030"
+  },
+  "billingAddress": {
+    "firstName": "Nathan",
+    "lastName": "Drake",
+    "lineOne": "Stonehenge",
+    "lineTwo": "Salisbury",
+    "city": "Salisbury",
+    "country": "GB",
+    "postalCode": "SP4 7DE",
+    "region": "Salisbury Plain"
+  },
+  "checks": {
+    "avsResponseCode": "Y",
+    "cvvResponseCode": "M"
+  },
+  "customerId": "cus_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+  "createdTimestamp": 1470989538
+}

@@ -1,0 +1,37 @@
+{
+  "id": "ps_01K0ESEN9EXZJYCKRXRGRWYSFK",
+  "amount": 5670,
+  "currency": "GBP",
+  "paymentType": "Standard",
+  "entryMode": "Online",
+  "customerEmail": "test@ryftpay.com",
+  "paymentMethod": {
+    "type": "Card",
+    "card": {
+      "scheme": "Visa",
+      "last4": "0002"
+    }
+  },
+  "returnUrl": "https://ryftpay.com",
+  "status": "PendingAction",
+  "metadata": {
+    "orderId": "791ca405-68ab-442a-ab08-1dfabff35af6",
+    "id": "a value with spaces"
+  },
+  "refundedAmount": 0,
+  "requiredAction": {
+    "type": "Challenge",
+    "challenge": {
+      "acsUrl": "https://acs.sandbox.ryftpay.com/browser/challenge",
+      "cReq": "eyJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjA0NDk0MWE3LTMxM2UtNGMxMi1iOTY2LTE1MzNmODBhMzllOSIsImFjc1RyYW5zSUQiOiJhZTI1NzAwNi05ZWRhLTRkZWEtODZlNC0wYjYxYjgwNDcxZTAiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMi4wIiwibWVzc2FnZVR5cGUiOiJDUmVxIiwiY2hhbGxlbmdlV2luZG93U2l6ZSI6IjAxIn0"
+    }
+  },
+  "statementDescriptor": {
+    "descriptor": "Ryft Ltd",
+    "city": "Manchester"
+  },
+  "authorizationType": "FinalAuth",
+  "captureFlow": "Manual",
+  "createdTimestamp": 1752843113,
+  "lastUpdatedTimestamp": 1752843161
+}

@@ -1,0 +1,133 @@
+{
+  "id": "ac_b83f2653-06d7-44a9-a548-5825e8186004",
+  "type": "Sub",
+  "email": "test@ryftpay.com",
+  "onboardingFlow": "NonHosted",
+  "entityType": "Business",
+  "business": {
+    "name": "Ryft LTD",
+    "type": "Corporation",
+    "registrationNumber": "12345678",
+    "registrationDate": "1982-02-12",
+    "registeredAddress": {
+      "lineOne": "123 Test Street",
+      "lineTwo": null,
+      "city": "Manchester",
+      "country": "GB",
+      "postalCode": "SP4 7DE",
+      "region": null
+    },
+    "contactEmail": "contact@test.com",
+    "phoneNumber": "+447900000000",
+    "tradingName": "Ryft Computer Parts Ltd",
+    "tradingAddress": {
+      "lineOne": "123 Test Street",
+      "lineTwo": null,
+      "city": "Manchester",
+      "country": "GB",
+      "postalCode": "SP4 7DE",
+      "region": null
+    },
+    "tradingCountries": [
+      "GB",
+      "IE"
+    ],
+    "websiteUrl": "https://ryftpay.com",
+    "documents": [
+      {
+        "type": "BankStatement",
+        "category": "ProofOfIdentity",
+        "front": "fl_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+        "back": "fl_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+        "status": "Pending",
+        "invalidReason": "Document has expired",
+        "country": "GB",
+        "assignedTimestamp": 1470989538,
+        "lastUpdatedTimestamp": 1470989538
+      }
+    ]
+  },
+  "verification": {
+    "status": "Required",
+    "requiredFields": [
+      {
+        "name": "business.registrationDate"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "category": "ProofOfIdentity",
+        "types": [
+          "BankStatement"
+        ],
+        "quantity": 1
+      }
+    ],
+    "errors": [
+      {
+        "code": "InvalidDocument",
+        "id": "fl_01FCTS1XMKH9FF43CAFA4CXT3P",
+        "description": "File corrupted or unclear"
+      }
+    ],
+    "persons": {
+      "status": "Required",
+      "required": [
+        {
+          "role": "Director",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  "metadata": {
+    "accountId": "1"
+  },
+  "settings": {
+    "payouts": {
+      "schedule": {
+        "type": "Automatic"
+      }
+    }
+  },
+  "capabilities": {
+    "visaPayments": {
+      "status": "Disabled",
+      "requested": true,
+      "requiredFields": [
+        {
+          "name": "entityType"
+        }
+      ],
+      "disabledReason": "Non compliant with scheme mandates",
+      "requestedTimestamp": 1470989538,
+      "lastUpdatedTimestamp": 1470989538
+    },
+    "mastercardPayments": {
+      "status": "Enabled",
+      "requested": true,
+      "requiredFields": [
+        {
+          "name": "entityType"
+        }
+      ],
+      "disabledReason": "Non compliant with scheme mandates",
+      "requestedTimestamp": 1470989538,
+      "lastUpdatedTimestamp": 1470989538
+    },
+    "amexPayments": {
+      "status": "Enabled",
+      "requested": true,
+      "requestedTimestamp": 1470989538,
+      "lastUpdatedTimestamp": 1470989538
+    }
+  },
+  "termsOfService": {
+    "acceptance": {
+      "ipAddress": "127.0.0.1",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36",
+      "when": 1697557453
+    }
+  },
+  "createdTimestamp": 1470989538
+}

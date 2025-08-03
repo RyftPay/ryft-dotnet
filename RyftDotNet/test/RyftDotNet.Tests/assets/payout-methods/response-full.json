@@ -1,0 +1,26 @@
+{
+  "id": "pm_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+  "type": "BankAccount",
+  "displayName": "Primary GBP Account",
+  "status": "Invalid",
+  "invalidReason": "Account is closed",
+  "currency": "GBP",
+  "countryCode": "GB",
+  "bankAccount": {
+    "bankIdType": "SortCode",
+    "bankId": "0123",
+    "bankName": "Ryft Bank Ltd",
+    "accountNumberType": "UnitedKingdom",
+    "last4": "0001",
+    "address": {
+      "lineOne": "123 Test Street",
+      "lineTwo": null,
+      "city": "Manchester",
+      "country": "GB",
+      "postalCode": "SP4 7DE",
+      "region": null
+    }
+  },
+  "createdTimestamp": 1470989538,
+  "lastUpdatedTimestamp": 1470989538
+}

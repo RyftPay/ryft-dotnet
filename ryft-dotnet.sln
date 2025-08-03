@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RyftDotNet", "RyftDotNet", "{D8C3DC27-EFF1-41DC-BB93-801EC66F0875}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{499D99E9-D23F-40F1-8B20-7551FC23479D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RyftDotNet", "RyftDotNet\src\RyftDotNet\RyftDotNet.csproj", "{6AECEC32-008A-4803-A3E6-17952426132D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C92465B4-A9E2-435F-A128-55AB768F2581}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RyftDotNet.Tests", "RyftDotNet\test\RyftDotNet.Tests\RyftDotNet.Tests.csproj", "{BC022588-1ED2-4A7F-B686-7B7DBD6AF970}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RyftDotNet.IntegrationTests", "RyftDotNet\test\RyftDotNet.IntegrationTests\RyftDotNet.IntegrationTests.csproj", "{FF45FE33-626D-4E6E-9F01-30E064692B5C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AECEC32-008A-4803-A3E6-17952426132D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AECEC32-008A-4803-A3E6-17952426132D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AECEC32-008A-4803-A3E6-17952426132D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AECEC32-008A-4803-A3E6-17952426132D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC022588-1ED2-4A7F-B686-7B7DBD6AF970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC022588-1ED2-4A7F-B686-7B7DBD6AF970}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC022588-1ED2-4A7F-B686-7B7DBD6AF970}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC022588-1ED2-4A7F-B686-7B7DBD6AF970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF45FE33-626D-4E6E-9F01-30E064692B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF45FE33-626D-4E6E-9F01-30E064692B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF45FE33-626D-4E6E-9F01-30E064692B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF45FE33-626D-4E6E-9F01-30E064692B5C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{499D99E9-D23F-40F1-8B20-7551FC23479D} = {D8C3DC27-EFF1-41DC-BB93-801EC66F0875}
+		{6AECEC32-008A-4803-A3E6-17952426132D} = {499D99E9-D23F-40F1-8B20-7551FC23479D}
+		{C92465B4-A9E2-435F-A128-55AB768F2581} = {D8C3DC27-EFF1-41DC-BB93-801EC66F0875}
+		{BC022588-1ED2-4A7F-B686-7B7DBD6AF970} = {C92465B4-A9E2-435F-A128-55AB768F2581}
+		{FF45FE33-626D-4E6E-9F01-30E064692B5C} = {C92465B4-A9E2-435F-A128-55AB768F2581}
+	EndGlobalSection
+EndGlobal

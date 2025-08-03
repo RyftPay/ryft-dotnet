@@ -1,0 +1,21 @@
+{
+  "id": "ev_01FGNPAY1DB5TKPB35M1MNT6PN",
+  "eventType": "Customer.created",
+  "data": {
+    "id": "cus_01JW5YE0Z28N23C3HHG34JHZ0G",
+    "email": "test@ryftpay.com",
+    "firstName": "Jeff",
+    "lastName": "Bridges",
+    "homePhoneNumber": "+447900000000",
+    "mobilePhoneNumber": "+447900000000",
+    "defaultPaymentMethod": "pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+    "metadata": {
+      "customerId": "1",
+      "registered": "123"
+    },
+    "createdTimestamp": 1716716232
+  },
+  "endpoints": [],
+  "accountId": "ac_b83f2653-06d7-44a9-a548-5825e8186004",
+  "createdTimestamp": 1570989538
+}

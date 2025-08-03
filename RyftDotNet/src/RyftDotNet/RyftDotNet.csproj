@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>RyftPay.Net</PackageId>
+    <Description>RyftPay .NET SDK</Description>
+    <Version>1.0.0</Version>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <Authors>RyftPay</Authors>
+    <Copyright>Copyright (c) RyftPay 2025</Copyright>
+    <Company>RyftPay</Company>
+    <Description>RyftPay.Net is the official SDK library for the Ryft payments API</Description>
+    <TargetFrameworks>netstandard2.0;net48;net8.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <PackageProjectUrl>https://github.com/RyftPay/ryft-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/RyftPay/ryft-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>Ryft,RyftPay,ryftpay.com,Payments,Marketplaces,Platforms</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net48' or '$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="Microsoft.Bcl.HashCode" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.1" />
+  </ItemGroup>
+  
+  <ItemGroup Label="Global Package References">
+    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\README.md" Pack="true" PackagePath="\"/>
+    <None Include="..\..\..\assets\logo.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+</Project>

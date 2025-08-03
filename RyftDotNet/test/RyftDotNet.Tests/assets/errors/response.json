@@ -1,0 +1,14 @@
+{
+  "requestId": "b83f2653-06d7-44a9-a548-5825e8186004",
+  "code": "500",
+  "errors": [
+    {
+      "code": "unexpected_error",
+      "message": "There was an unexpected error during the request"
+    },
+    {
+      "code": "unexpected_error",
+      "message": "Something went wrong downstream"
+    }
+  ]
+}

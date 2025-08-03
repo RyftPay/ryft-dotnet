@@ -1,0 +1,18 @@
+{
+    "id": "bltxn_01FCTS1XMKH9FF43CAFA4CXT3P",
+    "type": "TransactionCapture",
+    "amount": 575,
+    "currency": "GBP",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "feeTotal": 5,
+    "net": 572,
+    "status": "Available",
+    "origin": {
+      "id": "txn_01FCTS1XMKH9FF43CAFA4CXT3P_01FCTS1XMKH9FF43CAFA4CXT3P",
+      "amount": 575,
+      "accountId": "ac_b83f2653-06d7-44a9-a548-5825e8186004"
+    },
+    "availableAt": 1631696801,
+    "createdTimestamp": 1631696701,
+    "lastUpdatedTimestamp": 1631696800
+}

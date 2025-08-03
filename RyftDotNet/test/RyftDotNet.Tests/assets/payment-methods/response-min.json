@@ -1,0 +1,11 @@
+{
+  "id": "pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+  "type": "Card",
+  "card": {
+    "scheme": "Mastercard",
+    "last4": "4444",
+    "expiryMonth": "10",
+    "expiryYear": "2030"
+  },
+  "createdTimestamp": 1470989538
+}

@@ -1,0 +1,60 @@
+{
+  "id": "txn_01FCTS1XMKH9FF43CAFA4CXT3P_01FCTS1XMKH9FF43CAFA4CXT3P",
+  "paymentSessionId": "ps_01FCTS1XMKH9FF43CAFA4CXT3P",
+  "amount": 250,
+  "currency": "GBP",
+  "type": "Capture",
+  "status": "Succeeded",
+  "refundedAmount": 50,
+  "platformFee": 50,
+  "platformFeeRefundedAmount": 50,
+  "reason": "Requested by the customer",
+  "captureType": "Final",
+  "paymentMethod": {
+    "type": "Card",
+    "tokenizedDetails": {
+      "id": "pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ",
+      "stored": true
+    },
+    "card": {
+      "scheme": "Mastercard",
+      "last4": "4444"
+    },
+    "wallet": {
+      "type": "ApplePay"
+    },
+    "billingAddress": {
+      "firstName": "Nathan",
+      "lastName": "Drake",
+      "lineOne": "123 Test Street",
+      "lineTwo": "456 Lane",
+      "city": "Manchester",
+      "country": "GB",
+      "postalCode": "SP4 7DE",
+      "region": "NY"
+    },
+    "checks": {
+      "avsResponseCode": "Y",
+      "cvvResponseCode": "M"
+    }
+  },
+  "splitPaymentDetail": {
+    "items": [
+      {
+        "id": "sp_01FCTS1XMKH9FF43CAFA4CXT3P",
+        "accountId": "ac_b83f2653-06d7-44a9-a548-5825e8186004",
+        "amount": 50,
+        "fee": {
+          "amount": 50
+        },
+        "description": "2 x The Selfish Gene",
+        "metadata": {
+          "productId": "123",
+          "productDescription": "The Selfish Gene"
+        }
+      }
+    ]
+  },
+  "createdTimestamp": 1470989538,
+  "lastUpdatedTimestamp": 1470989538
+}

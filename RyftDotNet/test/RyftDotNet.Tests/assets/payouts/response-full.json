@@ -1,0 +1,26 @@
+{
+  "id": "po_01FJ1H0023R1AHM77YQ75RMKE7",
+  "amount": 9750,
+  "currency": "GBP",
+  "status": "InProgress",
+  "scheduleType": "Automatic",
+  "payoutMethod": {
+    "id": "pm_01FCTS1XMKH9FF43CAFA4CXT3P",
+    "bankAccount": {
+      "bankIdType": "SortCode",
+      "bankId": "123456",
+      "bankName": "Ryft Bank Ltd",
+      "accountNumberType": "UnitedKingdom",
+      "last4": "0001"
+    }
+  },
+  "failureReason": "InvalidPayoutMethod",
+  "scheme": "Fps",
+  "createdTimestamp": 1631696701,
+  "scheduledTimestamp": 1631696702,
+  "completedTimestamp": 1631696703,
+  "metadata": {
+    "orderId": "1",
+    "customerId": "123"
+  }
+}
