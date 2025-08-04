@@ -1,6 +1,7 @@
 # Ryft .NET SDK
 
 [![Build & Test](https://github.com/RyftPay/ryft-dotnet/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/RyftPay/ryft-dotnet/actions/workflows/build-and-test.yml) [![Integration Test](https://github.com/RyftPay/ryft-dotnet/actions/workflows/build-and-integration-test.yml/badge.svg)](https://github.com/RyftPay/ryft-dotnet/actions/workflows/build-and-integration-test.yml) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![NuGet version](https://badge.fury.io/nu/RyftPay.Net.svg)](https://badge.fury.io/nu/RyftPay.Net)
 
 The Ryft .Net SDK allows you to consume our payments API within your .Net applications
 
