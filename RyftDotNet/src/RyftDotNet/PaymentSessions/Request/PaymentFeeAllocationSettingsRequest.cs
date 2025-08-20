@@ -18,5 +18,8 @@ namespace RyftDotNet.PaymentSessions.Request
 
         [property: JsonPropertyName("combined")]
         public FeeAllocationRequestItem? Combined { get; set; }
+
+        [property: JsonPropertyName("miscPassThrough")]
+        public FeeAllocationRequestItem? MiscPassThrough { get; set; }
     }
 }

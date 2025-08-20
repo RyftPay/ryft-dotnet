@@ -18,27 +18,27 @@ internal static class TestUtility
 
     internal static readonly string ExistingPaymentMethodId =
         Environment.GetEnvironmentVariable(PaymentMethodIdEnvVar)
-        ?? throw new TestClassException($"Missing {ApiKeyEnvVar} environment variable");
+        ?? throw new TestClassException($"Missing {PaymentMethodIdEnvVar} environment variable");
 
     internal static readonly string ExistingCustomerId =
         Environment.GetEnvironmentVariable(CustomerIdEnvVar)
-        ?? throw new TestClassException($"Missing {ApiKeyEnvVar} environment variable");
+        ?? throw new TestClassException($"Missing {CustomerIdEnvVar} environment variable");
 
     internal static readonly string ExistingEventId
         = Environment.GetEnvironmentVariable(EventIdEnvVar)
-          ?? throw new TestClassException($"Missing {ApiKeyEnvVar} environment variable");
+          ?? throw new TestClassException($"Missing {EventIdEnvVar} environment variable");
 
     internal static readonly string ExistingHostedAccountId
         = Environment.GetEnvironmentVariable(HostedAccountIdEnvVar)
-          ?? throw new TestClassException($"Missing {ApiKeyEnvVar} environment variable");
+          ?? throw new TestClassException($"Missing {HostedAccountIdEnvVar} environment variable");
 
     internal static readonly string ExistingNonHostedAccountId
         = Environment.GetEnvironmentVariable(NonHostedAccountIdEnvVar)
-          ?? throw new TestClassException($"Missing {ApiKeyEnvVar} environment variable");
+          ?? throw new TestClassException($"Missing {NonHostedAccountIdEnvVar} environment variable");
 
     internal static readonly string ExistingPlatformFeeId
         = Environment.GetEnvironmentVariable(PlatformFeeIdEnvVar)
-          ?? throw new TestClassException($"Missing {ApiKeyEnvVar} environment variable");
+          ?? throw new TestClassException($"Missing {PlatformFeeIdEnvVar} environment variable");
 
     internal static string ResourcePrefix() =>
         $"ryft-dotnet_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}";

@@ -64,7 +64,8 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(PayoutMethodStatus),
             typeof(PayoutStatus),
             typeof(PayoutScheme),
-            typeof(TransferStatus)
+            typeof(TransferStatus),
+            typeof(AmountVariance)
         };
 
 
@@ -337,6 +338,12 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<TransferStatus>(
                     value => new TransferStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(AmountVariance))
+            {
+                return new ConstantValueJsonConverter<AmountVariance>(
+                    value => new AmountVariance(value)
                 );
             }
             throw new NotSupportedException(
