@@ -14,7 +14,7 @@ namespace RyftDotNet.PaymentSessions.Request
         public string ExpiryYear { get; }
 
         [property: JsonPropertyName("cvc")]
-        public string Cvc { get; }
+        public string? Cvc { get; set; }
 
         [property: JsonPropertyName("name")]
         public string? Name { get; set; }
@@ -23,7 +23,7 @@ namespace RyftDotNet.PaymentSessions.Request
             string number,
             string expiryMonth,
             string expiryYear,
-            string cvc)
+            string? cvc = null)
         {
             Number = number;
             ExpiryMonth = expiryMonth;
