@@ -11,7 +11,7 @@ namespace RyftDotNet.Tests
 
         public static TheoryData<string, string> ExpectedValues() => new TheoryData<string, string>
         {
-            { Constants.Version, "1.0.0" },
+            { Constants.Version, "1.1.0" },
             { Constants.UserAgentPrefix, "ryft-dotnet/" },
             { Constants.SandboxApiUrl, "https://sandbox-api.ryftpay.com" },
             { Constants.ProductionApiUrl, "https://api.ryftpay.com" },
