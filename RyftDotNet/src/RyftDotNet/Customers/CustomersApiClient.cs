@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using RyftDotNet.Client;
 using RyftDotNet.Common;
 using RyftDotNet.Customers.Request;
+using RyftDotNet.PaymentMethods;
 using RyftDotNet.Utility;
 
 namespace RyftDotNet.Customers
@@ -74,6 +76,18 @@ namespace RyftDotNet.Customers
             CancellationToken cancellationToken = default)
             => apiClient.RequestAsync<PaginatedResponse<Customer>>(
                 path: $"{ApiSuffix}{request?.ToQueryString()}",
+                HttpMethod.Get,
+                requestBody: null,
+                requestSettings,
+                cancellationToken: cancellationToken
+            );
+
+        public Task<CustomerPaymentMethods> GetCustomerPaymentMethods(
+            int customerId, 
+            ClientRequestSettings? requestSettings = null, 
+            CancellationToken cancellationToken = default)
+        => apiClient.RequestAsync<CustomerPaymentMethods>(
+                path: $"{ApiSuffix}/{customerId}/payment-methods",
                 HttpMethod.Get,
                 requestBody: null,
                 requestSettings,
