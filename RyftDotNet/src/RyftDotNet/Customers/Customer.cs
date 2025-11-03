@@ -69,15 +69,18 @@ namespace RyftDotNet.Customers
             => obj is Customer other && Equals(other);
 
         public override int GetHashCode()
-            => HashCode.Combine(
-                Email,
-                FirstName,
-                LastName,
-                HomePhoneNumber,
-                MobilePhoneNumber,
-                DefaultPaymentMethod,
-                Metadata,
-                CreatedTimestamp
-            ).GetHashCode();
+        {
+            var hashCode = new HashCode();
+            hashCode.Add(Id);
+            hashCode.Add(Email);
+            hashCode.Add(FirstName);
+            hashCode.Add(LastName);
+            hashCode.Add(HomePhoneNumber);
+            hashCode.Add(MobilePhoneNumber);
+            hashCode.Add(DefaultPaymentMethod);
+            hashCode.Add(Metadata);
+            hashCode.Add(CreatedTimestamp);
+            return hashCode.ToHashCode();
+        }
     }
 }

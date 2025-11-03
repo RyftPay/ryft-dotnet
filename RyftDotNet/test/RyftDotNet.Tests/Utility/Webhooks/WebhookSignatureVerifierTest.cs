@@ -7,7 +7,7 @@ namespace RyftDotNet.Tests.Utility.Webhooks
     public sealed class WebhookSignatureVerifierTest
     {
         [Fact]
-        public void IsValid_ShouldReturnTrue_WhenSignatureIsInValid()
+        public void IsValid_ShouldReturnFalse_WhenSignatureIsInvalid()
         {
             var verifier = new WebhookSignatureVerifier();
             const string payload = "{\"amount\": 500, \"currency\": \"GBP\"}";

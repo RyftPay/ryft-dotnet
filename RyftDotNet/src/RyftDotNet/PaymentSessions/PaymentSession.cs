@@ -162,8 +162,8 @@ namespace RyftDotNet.PaymentSessions
                    && Status == other.Status
                    && Equals(StatementDescriptor, other.StatementDescriptor)
                    && RefundedAmount == other.RefundedAmount
-                   && CreatedTimestamp.ToUnixTimeSeconds() == other.CreatedTimestamp.ToUnixTimeSeconds()
-                   && LastUpdatedTimestamp.ToUnixTimeSeconds() == other.LastUpdatedTimestamp.ToUnixTimeSeconds()
+                   && Equals(CreatedTimestamp, other.CreatedTimestamp)
+                   && Equals(LastUpdatedTimestamp, other.LastUpdatedTimestamp)
                    && EntryMode == other.EntryMode
                    && CustomerEmail == other.CustomerEmail
                    && Equals(CustomerDetails, other.CustomerDetails)
