@@ -15,7 +15,7 @@ namespace RyftDotNet.PaymentSessions.Request
         public string? Description { get; set; }
 
         [property: JsonPropertyName("fee")]
-        SplitPaymentRequestItemFee? Fee { get; set; }
+        public SplitPaymentRequestItemFee? Fee { get; set; }
 
         [property: JsonPropertyName("metadata")]
         public IDictionary<string, string>? Metadata { get; set; }
