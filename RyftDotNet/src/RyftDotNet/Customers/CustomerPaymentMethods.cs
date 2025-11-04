@@ -5,7 +5,7 @@ using RyftDotNet.PaymentMethods;
 
 namespace RyftDotNet.Customers
 {
-    public class CustomerPaymentMethods
+    public sealed class CustomerPaymentMethods
     {
         public IEnumerable<PaymentMethod> Items { get; set; } = new List<PaymentMethod>();
     }

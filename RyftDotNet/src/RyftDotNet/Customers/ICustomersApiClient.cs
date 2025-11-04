@@ -36,7 +36,7 @@ namespace RyftDotNet.Customers
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
 
-        Task<CustomerPaymentMethods> GetCustomerPaymentMethodsAsync(
+        Task<CustomerPaymentMethods> ListCustomerPaymentMethodsAsync(
             string customerId,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);

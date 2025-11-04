@@ -82,7 +82,7 @@ namespace RyftDotNet.Customers
                 cancellationToken: cancellationToken
             );
 
-        public Task<CustomerPaymentMethods> GetCustomerPaymentMethodsAsync(
+        public Task<CustomerPaymentMethods> ListCustomerPaymentMethodsAsync(
             string customerId, 
             ClientRequestSettings? requestSettings = null, 
             CancellationToken cancellationToken = default)

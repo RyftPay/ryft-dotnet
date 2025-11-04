@@ -240,13 +240,13 @@ namespace RyftDotNet.Tests.Customers
         }
 
         [Fact]
-        public async Task GetCustomerPaymentMethodsAsync_ShouldIssueRequestWithExpectedArguments()
+        public async Task ListCustomerPaymentMethodsAsync_ShouldIssueRequestWithExpectedArguments()
         {
             ExpectedRequestArguments? arguments = null;
             ryftApiClient.RequestAsync<CustomerPaymentMethods>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(new CustomerPaymentMethods { Items = new List<PaymentMethod>() });
-            await apiClient.GetCustomerPaymentMethodsAsync(customer.Id);
+            await apiClient.ListCustomerPaymentMethodsAsync(customer.Id);
             arguments.ShouldBe(new ExpectedRequestArguments(
                 $"customers/{customer.Id}/payment-methods",
                 HttpMethod.Get,
@@ -256,39 +256,23 @@ namespace RyftDotNet.Tests.Customers
         }
 
         [Fact]
-        public async Task GetCustomerPaymentMethodsAsync_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
-        {
-            ExpectedRequestArguments? arguments = null;
-            ryftApiClient.RequestAsync<CustomerPaymentMethods>()
-                .RecordInvokedArguments(args => arguments = args)
-                .ReturnsAsync(new CustomerPaymentMethods { Items = new List<PaymentMethod>() });
-            await apiClient.GetCustomerPaymentMethodsAsync(customer.Id);
-            arguments.ShouldBe(new ExpectedRequestArguments(
-                $"customers/{customer.Id}/payment-methods",
-                HttpMethod.Get,
-                HttpStatusCode.OK,
-                null
-            ));
-        }
-
-        [Fact]
-        public async Task GetCustomerPaymentMethodsAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
+        public async Task ListCustomerPaymentMethodsAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
             var exception = new RyftApiException("uh oh");
             ryftApiClient
                 .RequestAsync<CustomerPaymentMethods>()
                 .ThrowsAsync(exception);
-            Func<Task<CustomerPaymentMethods>> action = async () => await apiClient.GetCustomerPaymentMethodsAsync(customer.Id);
+            Func<Task<CustomerPaymentMethods>> action = async () => await apiClient.ListCustomerPaymentMethodsAsync(customer.Id);
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
             thrown.ShouldBeSameAs(exception);
         }
 
         [Fact]
-        public async Task GetCustomerPaymentMethodsAsync_ShouldReturnResource_WhenSuccessful()
+        public async Task ListCustomerPaymentMethodsAsync_ShouldReturnResource_WhenSuccessful()
         {
             var response = new CustomerPaymentMethods { Items = new List<PaymentMethod> { TestData.PaymentMethod() } };
             ryftApiClient.RequestAsync<CustomerPaymentMethods>().ReturnsAsync(response);
-            var result = await apiClient.GetCustomerPaymentMethodsAsync(customer.Id);
+            var result = await apiClient.ListCustomerPaymentMethodsAsync(customer.Id);
             result.ShouldBe(response);
         }
     }
