@@ -12,6 +12,9 @@ using RyftDotNet.Disputes;
 using RyftDotNet.Events;
 using RyftDotNet.Files;
 using RyftDotNet.Files.Request;
+using RyftDotNet.InPerson.Orders;
+using RyftDotNet.InPerson.Products;
+using RyftDotNet.InPerson.Skus;
 using RyftDotNet.PaymentMethods;
 using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.PaymentTransactions;
@@ -437,6 +440,72 @@ namespace RyftDotNet.Tests
                 "GBP",
                 new SubscriptionIntervalRequest(IntervalUnit.Months, 12)
             )
+        );
+
+        internal static InPersonProduct InPersonProduct() => new InPersonProduct(
+            "ippd_01HXYZ123456789ABCDEFGH",
+            "Terminal 232",
+            InPersonProductStatus.Available,
+            "Portable card reader for in-person payments",
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new Dictionary<string, string> { { "connectivity", "WiFi, Bluetooth" } }
+        );
+
+        internal static InPersonProductSku InPersonProductSku() => new InPersonProductSku(
+            "ipsku_01HXYZ987654321ABCDEFGH",
+            "Terminal 232 - UK Version",
+            "GB",
+            25000,
+            "GBP",
+            InPersonProductStatus.Available,
+            "ippd_01HXYZ123456789ABCDEFGH",
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538)
+        );
+
+        internal static InPersonOrder InPersonOrder() => new InPersonOrder(
+            "ipord_01HXYZ789012345ABCDEFGH",
+            InPersonOrderStatus.ReadyToShip,
+            25000,
+            2000,
+            "GBP",
+            new List<InPersonOrderItem>
+            {
+                new InPersonOrderItem(
+                    "ipsku_01HXYZ987654321ABCDEFGH",
+                    "Terminal 232 - UK Version",
+                    25000,
+                    2000,
+                    1
+                )
+            },
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new InPersonOrderShipping(
+                "John",
+                "Smith",
+                "+447900123456",
+                "john.smith@example.com",
+                new InPersonOrderShippingAddress(
+                    "123 High Street",
+                    "London",
+                    "SW1A 1AA",
+                    "GB",
+                    "Floor 2",
+                    "Greater London"
+                ),
+                "Acme Corp"
+            ),
+            new InPersonOrderTracking(
+                "Royal Mail",
+                "RM123456789GB",
+                new List<InPersonOrderTrackingItem>
+                {
+                    new InPersonOrderTrackingItem("ipsku_01HXYZ987654321ABCDEFGH", 1)
+                }
+            ),
+            new Dictionary<string, string> { { "customerRef", "ORDER-2024-001" } }
         );
     }
 }

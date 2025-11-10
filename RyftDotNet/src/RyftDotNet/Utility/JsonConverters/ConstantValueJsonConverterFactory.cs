@@ -7,6 +7,8 @@ using RyftDotNet.BalanceTransactions;
 using RyftDotNet.Common;
 using RyftDotNet.Disputes;
 using RyftDotNet.Files;
+using RyftDotNet.InPerson.Orders;
+using RyftDotNet.InPerson.Products;
 using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.PaymentTransactions;
 using RyftDotNet.PayoutMethods;
@@ -65,7 +67,9 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(PayoutStatus),
             typeof(PayoutScheme),
             typeof(TransferStatus),
-            typeof(AmountVariance)
+            typeof(AmountVariance),
+            typeof(InPersonProductStatus),
+            typeof(InPersonOrderStatus)
         };
 
 
@@ -344,6 +348,18 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<AmountVariance>(
                     value => new AmountVariance(value)
+                );
+            }
+            if (typeToConvert == typeof(InPersonProductStatus))
+            {
+                return new ConstantValueJsonConverter<InPersonProductStatus>(
+                    value => new InPersonProductStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(InPersonOrderStatus))
+            {
+                return new ConstantValueJsonConverter<InPersonOrderStatus>(
+                    value => new InPersonOrderStatus(value)
                 );
             }
             throw new NotSupportedException(
