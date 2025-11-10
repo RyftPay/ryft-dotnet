@@ -12,9 +12,13 @@ using RyftDotNet.Disputes;
 using RyftDotNet.Events;
 using RyftDotNet.Files;
 using RyftDotNet.Files.Request;
+using RyftDotNet.InPerson.Locations;
+using RyftDotNet.InPerson.Locations.Request;
 using RyftDotNet.InPerson.Orders;
 using RyftDotNet.InPerson.Products;
 using RyftDotNet.InPerson.Skus;
+using RyftDotNet.InPerson.Terminals;
+using RyftDotNet.InPerson.Terminals.Request;
 using RyftDotNet.PaymentMethods;
 using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.PaymentTransactions;
@@ -507,5 +511,103 @@ namespace RyftDotNet.Tests
             ),
             new Dictionary<string, string> { { "customerRef", "ORDER-2024-001" } }
         );
+
+        internal static InPersonLocation InPersonLocation() => new InPersonLocation(
+            "iploc_01HXYZ456789012ABCDEFGH",
+            "Main Store London",
+            new InPersonLocationAddress(
+                "123 Oxford Street",
+                "London",
+                "GB",
+                "W1D 1BS",
+                "Unit 5",
+                "Greater London"
+            ),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new GeoCoordinates(51.5074, -0.1278),
+            new Dictionary<string, string> { { "storeCode", "LON-001" } }
+        );
+
+        internal static CreateInPersonLocationRequest CreateInPersonLocationRequest()
+            => new CreateInPersonLocationRequest(
+                "Main Store London",
+                new InPersonLocationAddressRequest(
+                    "123 Oxford Street",
+                    "London",
+                    "GB",
+                    "W1D 1BS"
+                )
+                {
+                    LineTwo = "Unit 5",
+                    Region = "Greater London"
+                }
+            )
+            {
+                GeoCoordinates = new GeoCoordinatesRequest(51.5074, -0.1278),
+                Metadata = new Dictionary<string, string> { { "storeCode", "LON-001" } }
+            };
+
+        internal static Terminal Terminal() => new Terminal(
+            "iptrm_01HXYZ789012345ABCDEFGH",
+            "Terminal 232",
+            new TerminalLocation("iploc_01HXYZ456789012ABCDEFGH"),
+            new TerminalDeviceDetail("BBPOS WisePOS E", "SN123456789"),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new TerminalAction(
+                TerminalActionType.Transaction,
+                TerminalActionStatus.Succeeded,
+                "ipta_01HXYZ234567890ABCDEFGH",
+                DateTimeOffset.FromUnixTimeSeconds(1470989538),
+                null,
+                new TerminalActionTransaction(
+                    TerminalTransactionType.Payment,
+                    "ps_01HXYZ012345678ABCDEFGH",
+                    new TerminalActionAmounts(1000),
+                    "GBP",
+                    new TerminalActionTransactionSettings(TerminalReceiptPrintingSource.Terminal)
+                ),
+                DateTimeOffset.FromUnixTimeSeconds(1470989550)
+            ),
+            new Dictionary<string, string> { { "terminalCode", "TERM-001" } }
+        );
+
+        internal static CreateTerminalRequest CreateTerminalRequest()
+            => new CreateTerminalRequest("SN123456789", "iploc_01HXYZ456789012ABCDEFGH")
+            {
+                Name = "Terminal 232",
+                Metadata = new Dictionary<string, string> { { "terminalCode", "TERM-001" } }
+            };
+
+        internal static TerminalPaymentRequest TerminalPaymentRequest()
+            => new TerminalPaymentRequest(
+                new TerminalPaymentAmountsRequest(1000),
+                "GBP"
+            )
+            {
+                PaymentSession = new TerminalPaymentSessionRequest
+                {
+                    PlatformFee = 100,
+                    Metadata = new Dictionary<string, string> { { "sessionRef", "SES-001" } }
+                },
+                Settings = new TerminalTransactionSettingsRequest
+                {
+                    ReceiptPrintingSource = TerminalReceiptPrintingSource.Terminal
+                }
+            };
+
+        internal static TerminalRefundRequest TerminalRefundRequest()
+            => new TerminalRefundRequest(
+                new TerminalRefundPaymentSessionRequest("ps_01HXYZ012345678ABCDEFGH")
+            )
+            {
+                Amount = 500,
+                RefundPlatformFee = false,
+                Settings = new TerminalTransactionSettingsRequest
+                {
+                    ReceiptPrintingSource = TerminalReceiptPrintingSource.Terminal
+                }
+            };
     }
 }

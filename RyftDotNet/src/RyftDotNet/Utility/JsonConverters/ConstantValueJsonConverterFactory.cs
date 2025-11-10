@@ -9,6 +9,7 @@ using RyftDotNet.Disputes;
 using RyftDotNet.Files;
 using RyftDotNet.InPerson.Orders;
 using RyftDotNet.InPerson.Products;
+using RyftDotNet.InPerson.Terminals;
 using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.PaymentTransactions;
 using RyftDotNet.PayoutMethods;
@@ -69,7 +70,11 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(TransferStatus),
             typeof(AmountVariance),
             typeof(InPersonProductStatus),
-            typeof(InPersonOrderStatus)
+            typeof(InPersonOrderStatus),
+            typeof(TerminalActionType),
+            typeof(TerminalActionStatus),
+            typeof(TerminalReceiptPrintingSource),
+            typeof(TerminalTransactionType)
         };
 
 
@@ -360,6 +365,30 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<InPersonOrderStatus>(
                     value => new InPersonOrderStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalActionType))
+            {
+                return new ConstantValueJsonConverter<TerminalActionType>(
+                    value => new TerminalActionType(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalActionStatus))
+            {
+                return new ConstantValueJsonConverter<TerminalActionStatus>(
+                    value => new TerminalActionStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalReceiptPrintingSource))
+            {
+                return new ConstantValueJsonConverter<TerminalReceiptPrintingSource>(
+                    value => new TerminalReceiptPrintingSource(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalTransactionType))
+            {
+                return new ConstantValueJsonConverter<TerminalTransactionType>(
+                    value => new TerminalTransactionType(value)
                 );
             }
             throw new NotSupportedException(
