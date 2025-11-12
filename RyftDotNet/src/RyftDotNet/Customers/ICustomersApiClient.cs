@@ -1,8 +1,10 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using RyftDotNet.Client;
 using RyftDotNet.Common;
 using RyftDotNet.Customers.Request;
+using RyftDotNet.PaymentMethods;
 
 namespace RyftDotNet.Customers
 {
@@ -31,6 +33,11 @@ namespace RyftDotNet.Customers
 
         Task<PaginatedResponse<Customer>> ListAsync(
             ListCustomersRequest? request = null,
+            ClientRequestSettings? requestSettings = null,
+            CancellationToken cancellationToken = default);
+
+        Task<CustomerPaymentMethods> ListCustomerPaymentMethodsAsync(
+            string customerId,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
     }

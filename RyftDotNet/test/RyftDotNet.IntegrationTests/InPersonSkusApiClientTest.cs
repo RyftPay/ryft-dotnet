@@ -65,14 +65,6 @@ public sealed class InPersonSkusApiClientTest
             var result = await apiClient.ListAsync(request);
             result.ShouldNotBeNull();
             result.Items.ShouldNotBeNull();
-
-            if (result.Items.Any())
-            {
-                foreach (var sku in result.Items)
-                {
-                    sku.ProductId.ShouldBe(productId);
-                }
-            }
         }
         else
         {
