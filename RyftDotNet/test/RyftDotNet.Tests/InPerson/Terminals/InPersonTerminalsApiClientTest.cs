@@ -281,7 +281,11 @@ namespace RyftDotNet.Tests.InPerson.Terminals
         [Fact]
         public async Task ConfirmReceiptAsync_ShouldIssueRequestWithExpectedArguments()
         {
-            var confirmRequest = new TerminalConfirmReceiptRequest { CustomerCopy = true, MerchantCopy = false };
+            var confirmRequest = new TerminalConfirmReceiptRequest
+            {
+                CustomerCopy = new TerminalConfirmReceiptResultRequest(TerminalReceiptPrintingStatus.Succeeded),
+                MerchantCopy = new TerminalConfirmReceiptResultRequest(TerminalReceiptPrintingStatus.Failed)
+            };
             ExpectedRequestArguments? arguments = null;
             ryftApiClient
                 .RequestAsync<Terminal>()
@@ -300,7 +304,10 @@ namespace RyftDotNet.Tests.InPerson.Terminals
         public async Task ConfirmReceiptAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
             var exception = new RyftApiException("uh oh");
-            var confirmRequest = new TerminalConfirmReceiptRequest { CustomerCopy = true };
+            var confirmRequest = new TerminalConfirmReceiptRequest
+            {
+                CustomerCopy = new TerminalConfirmReceiptResultRequest(TerminalReceiptPrintingStatus.Succeeded)
+            };
             ryftApiClient.RequestAsync<Terminal>().ThrowsAsync(exception);
             Func<Task<Terminal>> action = async () => await apiClient.ConfirmReceiptAsync(terminal.Id, confirmRequest);
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
@@ -310,7 +317,10 @@ namespace RyftDotNet.Tests.InPerson.Terminals
         [Fact]
         public async Task ConfirmReceiptAsync_ShouldReturnResource_WhenSuccessful()
         {
-            var confirmRequest = new TerminalConfirmReceiptRequest { CustomerCopy = true };
+            var confirmRequest = new TerminalConfirmReceiptRequest
+            {
+                CustomerCopy = new TerminalConfirmReceiptResultRequest(TerminalReceiptPrintingStatus.Succeeded)
+            };
             ryftApiClient.RequestAsync<Terminal>().ReturnsAsync(terminal);
             var result = await apiClient.ConfirmReceiptAsync(terminal.Id, confirmRequest);
             result.ShouldBe(terminal);

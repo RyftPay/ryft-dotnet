@@ -74,7 +74,8 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(TerminalActionType),
             typeof(TerminalActionStatus),
             typeof(TerminalReceiptPrintingSource),
-            typeof(TerminalTransactionType)
+            typeof(TerminalTransactionType),
+            typeof(TerminalReceiptPrintingStatus)
         };
 
 
@@ -389,6 +390,12 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<TerminalTransactionType>(
                     value => new TerminalTransactionType(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalReceiptPrintingStatus))
+            {
+                return new ConstantValueJsonConverter<TerminalReceiptPrintingStatus>(
+                    value => new TerminalReceiptPrintingStatus(value)
                 );
             }
             throw new NotSupportedException(

@@ -487,26 +487,39 @@ namespace RyftDotNet.Tests
             DateTimeOffset.FromUnixTimeSeconds(1470989538),
             DateTimeOffset.FromUnixTimeSeconds(1470989538),
             new InPersonOrderShipping(
-                "John",
-                "Smith",
-                "+447900123456",
-                "john.smith@example.com",
                 new InPersonOrderShippingAddress(
+                    "John",
+                    "Smith",
                     "123 High Street",
                     "London",
                     "SW1A 1AA",
-                    "GB",
-                    "Floor 2",
-                    "Greater London"
+                    "GB"
+                )
+                {
+                    BusinessName = "Acme Corp",
+                    LineTwo = "Floor 2",
+                    Region = "Greater London"
+                },
+                new InPersonOrderShippingContact(
+                    "john.smith@example.com",
+                    "+447900123456"
                 ),
-                "Acme Corp"
+                new InPersonOrderShippingMethod(
+                    "ipsm_01HXYZ123456789ABCDEFGH",
+                    "Next Business Day",
+                    "Delivered next business day",
+                    1500,
+                    250
+                )
             ),
             new InPersonOrderTracking(
-                "Royal Mail",
-                "RM123456789GB",
                 new List<InPersonOrderTrackingItem>
                 {
-                    new InPersonOrderTrackingItem("ipsku_01HXYZ987654321ABCDEFGH", 1)
+                    new InPersonOrderTrackingItem(
+                        "Royal Mail",
+                        "RM123456789GB",
+                        DateTimeOffset.FromUnixTimeSeconds(1470989538)
+                    )
                 }
             ),
             new Dictionary<string, string> { { "customerRef", "ORDER-2024-001" } }

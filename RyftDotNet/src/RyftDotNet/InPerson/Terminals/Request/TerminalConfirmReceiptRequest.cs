@@ -5,9 +5,9 @@ namespace RyftDotNet.InPerson.Terminals.Request
     public sealed class TerminalConfirmReceiptRequest
     {
         [JsonPropertyName("customerCopy")]
-        public bool? CustomerCopy { get; set; }
+        public TerminalConfirmReceiptResultRequest? CustomerCopy { get; set; }
 
         [JsonPropertyName("merchantCopy")]
-        public bool? MerchantCopy { get; set; }
+        public TerminalConfirmReceiptResultRequest? MerchantCopy { get; set; }
     }
 }

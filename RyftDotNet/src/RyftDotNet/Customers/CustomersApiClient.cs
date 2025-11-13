@@ -83,8 +83,8 @@ namespace RyftDotNet.Customers
             );
 
         public Task<CustomerPaymentMethods> ListCustomerPaymentMethodsAsync(
-            string customerId, 
-            ClientRequestSettings? requestSettings = null, 
+            string customerId,
+            ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)
         => apiClient.RequestAsync<CustomerPaymentMethods>(
                 path: $"{ApiSuffix}/{customerId}/payment-methods",

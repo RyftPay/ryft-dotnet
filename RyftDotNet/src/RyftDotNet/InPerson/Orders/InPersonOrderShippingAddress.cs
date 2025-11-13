@@ -1,67 +1,53 @@
-using System;
 using System.Text.Json.Serialization;
 
 namespace RyftDotNet.InPerson.Orders
 {
-    public sealed class InPersonOrderShippingAddress : IEquatable<InPersonOrderShippingAddress>
+    public sealed class InPersonOrderShippingAddress
     {
-        [property: JsonPropertyName("lineOne")]
+        [JsonPropertyName("businessName")]
+        public string? BusinessName { get; set; }
+
+        [JsonPropertyName("firstName")]
+        public string FirstName { get; }
+
+        [JsonPropertyName("lastName")]
+        public string LastName { get; }
+
+        [JsonPropertyName("lineOne")]
         public string LineOne { get; }
 
-        [property: JsonPropertyName("lineTwo")]
-        public string? LineTwo { get; }
+        [JsonPropertyName("lineTwo")]
+        public string? LineTwo { get; set; }
 
-        [property: JsonPropertyName("city")]
+        [JsonPropertyName("city")]
         public string City { get; }
 
-        [property: JsonPropertyName("region")]
-        public string? Region { get; }
-
-        [property: JsonPropertyName("postalCode")]
+        [JsonPropertyName("postalCode")]
         public string PostalCode { get; }
 
-        [property: JsonPropertyName("country")]
+        [JsonPropertyName("country")]
         public string Country { get; }
 
+        [JsonPropertyName("region")]
+        public string? Region { get; set; }
+
+        [JsonPropertyName("deliveryInstructions")]
+        public string? DeliveryInstructions { get; set; }
+
         public InPersonOrderShippingAddress(
+            string firstName,
+            string lastName,
             string lineOne,
             string city,
             string postalCode,
-            string country,
-            string? lineTwo = null,
-            string? region = null)
+            string country)
         {
+            FirstName = firstName;
+            LastName = lastName;
             LineOne = lineOne;
             City = city;
             PostalCode = postalCode;
             Country = country;
-            LineTwo = lineTwo;
-            Region = region;
-        }
-
-        public bool Equals(InPersonOrderShippingAddress? other)
-            => !ReferenceEquals(null, other)
-               && (ReferenceEquals(this, other)
-                   || LineOne == other.LineOne
-                   && LineTwo == other.LineTwo
-                   && City == other.City
-                   && Region == other.Region
-                   && PostalCode == other.PostalCode
-                   && Country == other.Country);
-
-        public override bool Equals(object? obj)
-            => obj is InPersonOrderShippingAddress other && Equals(other);
-
-        public override int GetHashCode()
-        {
-            var hashCode = new HashCode();
-            hashCode.Add(LineOne);
-            hashCode.Add(LineTwo);
-            hashCode.Add(City);
-            hashCode.Add(Region);
-            hashCode.Add(PostalCode);
-            hashCode.Add(Country);
-            return hashCode.ToHashCode();
         }
     }
 }

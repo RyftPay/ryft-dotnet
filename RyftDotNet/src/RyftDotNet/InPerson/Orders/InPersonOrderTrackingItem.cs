@@ -3,30 +3,25 @@ using System.Text.Json.Serialization;
 
 namespace RyftDotNet.InPerson.Orders
 {
-    public sealed class InPersonOrderTrackingItem : IEquatable<InPersonOrderTrackingItem>
+    public sealed class InPersonOrderTrackingItem
     {
-        [property: JsonPropertyName("id")]
-        public string Id { get; }
+        [JsonPropertyName("carrier")]
+        public string Carrier { get; }
 
-        [property: JsonPropertyName("quantity")]
-        public int Quantity { get; }
+        [JsonPropertyName("reference")]
+        public string Reference { get; }
 
-        public InPersonOrderTrackingItem(string id, int quantity)
+        [JsonPropertyName("shippedTimestamp")]
+        public DateTimeOffset ShippedTimestamp { get; }
+
+        public InPersonOrderTrackingItem(
+            string carrier,
+            string reference,
+            DateTimeOffset shippedTimestamp)
         {
-            Id = id;
-            Quantity = quantity;
+            Carrier = carrier;
+            Reference = reference;
+            ShippedTimestamp = shippedTimestamp;
         }
-
-        public bool Equals(InPersonOrderTrackingItem? other)
-            => !ReferenceEquals(null, other)
-               && (ReferenceEquals(this, other)
-                   || Id == other.Id
-                   && Quantity == other.Quantity);
-
-        public override bool Equals(object? obj)
-            => obj is InPersonOrderTrackingItem other && Equals(other);
-
-        public override int GetHashCode()
-            => HashCode.Combine(Id, Quantity);
     }
 }
