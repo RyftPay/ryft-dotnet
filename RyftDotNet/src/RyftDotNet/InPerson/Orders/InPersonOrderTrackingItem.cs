@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using RyftDotNet.Utility.JsonConverters;
 
 namespace RyftDotNet.InPerson.Orders
 {
@@ -11,7 +12,9 @@ namespace RyftDotNet.InPerson.Orders
         [JsonPropertyName("reference")]
         public string Reference { get; }
 
-        [JsonPropertyName("shippedTimestamp")]
+        [property:
+            JsonPropertyName("shippedTimestamp"),
+            JsonConverter(typeof(DateTimeOffsetEpochSecondsConverter))]
         public DateTimeOffset ShippedTimestamp { get; }
 
         public InPersonOrderTrackingItem(

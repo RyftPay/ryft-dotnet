@@ -17,6 +17,9 @@ namespace RyftDotNet.InPerson.Terminals
         [property: JsonPropertyName("currency")]
         public string Currency { get; }
 
+        [property: JsonPropertyName("receiptDetail")]
+        public TerminalActionReceiptDetail? ReceiptDetail { get; }
+
         [property: JsonPropertyName("settings")]
         public TerminalActionTransactionSettings Settings { get; }
 
@@ -25,12 +28,14 @@ namespace RyftDotNet.InPerson.Terminals
             string paymentSessionId,
             TerminalActionAmounts amounts,
             string currency,
-            TerminalActionTransactionSettings settings)
+            TerminalActionTransactionSettings settings,
+            TerminalActionReceiptDetail? receiptDetail = null)
         {
             Type = type;
             PaymentSessionId = paymentSessionId;
             Amounts = amounts;
             Currency = currency;
+            ReceiptDetail = receiptDetail;
             Settings = settings;
         }
 
@@ -41,6 +46,7 @@ namespace RyftDotNet.InPerson.Terminals
                    && PaymentSessionId == other.PaymentSessionId
                    && Amounts.Equals(other.Amounts)
                    && Currency == other.Currency
+                   && Equals(ReceiptDetail, other.ReceiptDetail)
                    && Settings.Equals(other.Settings));
 
         public override bool Equals(object? obj)
@@ -53,6 +59,7 @@ namespace RyftDotNet.InPerson.Terminals
             hashCode.Add(PaymentSessionId);
             hashCode.Add(Amounts);
             hashCode.Add(Currency);
+            hashCode.Add(ReceiptDetail);
             hashCode.Add(Settings);
             return hashCode.ToHashCode();
         }

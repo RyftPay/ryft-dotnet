@@ -26,6 +26,9 @@ namespace RyftDotNet.InPerson.Orders
         [property: JsonPropertyName("items")]
         public IEnumerable<InPersonOrderItem> Items { get; }
 
+        [property: JsonPropertyName("customer")]
+        public InPersonOrderCustomer Customer { get; }
+
         [property: JsonPropertyName("shipping")]
         public InPersonOrderShipping? Shipping { get; }
 
@@ -52,6 +55,7 @@ namespace RyftDotNet.InPerson.Orders
             long taxAmount,
             string currency,
             IEnumerable<InPersonOrderItem> items,
+            InPersonOrderCustomer customer,
             DateTimeOffset createdTimestamp,
             DateTimeOffset lastUpdatedTimestamp,
             InPersonOrderShipping? shipping = null,
@@ -64,6 +68,7 @@ namespace RyftDotNet.InPerson.Orders
             TaxAmount = taxAmount;
             Currency = currency;
             Items = items;
+            Customer = customer;
             CreatedTimestamp = createdTimestamp;
             LastUpdatedTimestamp = lastUpdatedTimestamp;
             Shipping = shipping;
@@ -80,6 +85,7 @@ namespace RyftDotNet.InPerson.Orders
                    && TaxAmount == other.TaxAmount
                    && Currency == other.Currency
                    && Utilities.SequenceEqual(Items, other.Items)
+                   && Customer.Equals(other.Customer)
                    && Equals(Shipping, other.Shipping)
                    && Equals(Tracking, other.Tracking)
                    && Utilities.DictionaryEquals(Metadata, other.Metadata)
@@ -98,6 +104,7 @@ namespace RyftDotNet.InPerson.Orders
             hashCode.Add(TaxAmount);
             hashCode.Add(Currency);
             hashCode.Add(Items);
+            hashCode.Add(Customer);
             hashCode.Add(Shipping);
             hashCode.Add(Tracking);
             hashCode.Add(Metadata);

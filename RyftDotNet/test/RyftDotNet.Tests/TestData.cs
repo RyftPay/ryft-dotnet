@@ -484,6 +484,11 @@ namespace RyftDotNet.Tests
                     1
                 )
             },
+            new InPersonOrderCustomer(
+                "john.smith@example.com",
+                "John",
+                "Smith"
+            ),
             DateTimeOffset.FromUnixTimeSeconds(1470989538),
             DateTimeOffset.FromUnixTimeSeconds(1470989538),
             new InPersonOrderShipping(
@@ -579,7 +584,11 @@ namespace RyftDotNet.Tests
                     "ps_01HXYZ012345678ABCDEFGH",
                     new TerminalActionAmounts(1000),
                     "GBP",
-                    new TerminalActionTransactionSettings(TerminalReceiptPrintingSource.Terminal)
+                    new TerminalActionTransactionSettings(TerminalReceiptPrintingSource.PointOfSale),
+                    new TerminalActionReceiptDetail(
+                        new TerminalActionReceipt(TerminalReceiptPrintingStatus.Required),
+                        new TerminalActionReceipt(TerminalReceiptPrintingStatus.NotRequired)
+                    )
                 ),
                 DateTimeOffset.FromUnixTimeSeconds(1470989550)
             ),
