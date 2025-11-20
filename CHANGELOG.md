@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+This release includes the following:
+ - the SDK now supports the new /in-person API resources
+ - fixes the hashCode implementation within the `Customer` model
+
 ## 1.1.0
 
 This release includes the following:
