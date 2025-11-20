@@ -7,6 +7,9 @@ using RyftDotNet.BalanceTransactions;
 using RyftDotNet.Common;
 using RyftDotNet.Disputes;
 using RyftDotNet.Files;
+using RyftDotNet.InPerson.Orders;
+using RyftDotNet.InPerson.Products;
+using RyftDotNet.InPerson.Terminals;
 using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.PaymentTransactions;
 using RyftDotNet.PayoutMethods;
@@ -65,7 +68,14 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(PayoutStatus),
             typeof(PayoutScheme),
             typeof(TransferStatus),
-            typeof(AmountVariance)
+            typeof(AmountVariance),
+            typeof(InPersonProductStatus),
+            typeof(InPersonOrderStatus),
+            typeof(TerminalActionType),
+            typeof(TerminalActionStatus),
+            typeof(TerminalReceiptPrintingSource),
+            typeof(TerminalTransactionType),
+            typeof(TerminalReceiptPrintingStatus)
         };
 
 
@@ -344,6 +354,48 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<AmountVariance>(
                     value => new AmountVariance(value)
+                );
+            }
+            if (typeToConvert == typeof(InPersonProductStatus))
+            {
+                return new ConstantValueJsonConverter<InPersonProductStatus>(
+                    value => new InPersonProductStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(InPersonOrderStatus))
+            {
+                return new ConstantValueJsonConverter<InPersonOrderStatus>(
+                    value => new InPersonOrderStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalActionType))
+            {
+                return new ConstantValueJsonConverter<TerminalActionType>(
+                    value => new TerminalActionType(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalActionStatus))
+            {
+                return new ConstantValueJsonConverter<TerminalActionStatus>(
+                    value => new TerminalActionStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalReceiptPrintingSource))
+            {
+                return new ConstantValueJsonConverter<TerminalReceiptPrintingSource>(
+                    value => new TerminalReceiptPrintingSource(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalTransactionType))
+            {
+                return new ConstantValueJsonConverter<TerminalTransactionType>(
+                    value => new TerminalTransactionType(value)
+                );
+            }
+            if (typeToConvert == typeof(TerminalReceiptPrintingStatus))
+            {
+                return new ConstantValueJsonConverter<TerminalReceiptPrintingStatus>(
+                    value => new TerminalReceiptPrintingStatus(value)
                 );
             }
             throw new NotSupportedException(

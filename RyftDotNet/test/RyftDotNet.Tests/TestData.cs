@@ -12,6 +12,13 @@ using RyftDotNet.Disputes;
 using RyftDotNet.Events;
 using RyftDotNet.Files;
 using RyftDotNet.Files.Request;
+using RyftDotNet.InPerson.Locations;
+using RyftDotNet.InPerson.Locations.Request;
+using RyftDotNet.InPerson.Orders;
+using RyftDotNet.InPerson.Products;
+using RyftDotNet.InPerson.Skus;
+using RyftDotNet.InPerson.Terminals;
+using RyftDotNet.InPerson.Terminals.Request;
 using RyftDotNet.PaymentMethods;
 using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.PaymentTransactions;
@@ -438,5 +445,191 @@ namespace RyftDotNet.Tests
                 new SubscriptionIntervalRequest(IntervalUnit.Months, 12)
             )
         );
+
+        internal static InPersonProduct InPersonProduct() => new InPersonProduct(
+            "ippd_01HXYZ123456789ABCDEFGH",
+            "Terminal 232",
+            InPersonProductStatus.Available,
+            "Portable card reader for in-person payments",
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new Dictionary<string, string> { { "connectivity", "WiFi, Bluetooth" } }
+        );
+
+        internal static InPersonProductSku InPersonProductSku() => new InPersonProductSku(
+            "ipsku_01HXYZ987654321ABCDEFGH",
+            "Terminal 232 - UK Version",
+            "GB",
+            25000,
+            "GBP",
+            InPersonProductStatus.Available,
+            "ippd_01HXYZ123456789ABCDEFGH",
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538)
+        );
+
+        internal static InPersonOrder InPersonOrder() => new InPersonOrder(
+            "ipord_01HXYZ789012345ABCDEFGH",
+            InPersonOrderStatus.ReadyToShip,
+            25000,
+            2000,
+            "GBP",
+            new List<InPersonOrderItem>
+            {
+                new InPersonOrderItem(
+                    "ipsku_01HXYZ987654321ABCDEFGH",
+                    "Terminal 232 - UK Version",
+                    25000,
+                    2000,
+                    1
+                )
+            },
+            new InPersonOrderCustomer(
+                "john.smith@example.com",
+                "John",
+                "Smith"
+            ),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new InPersonOrderShipping(
+                new InPersonOrderShippingAddress(
+                    "John",
+                    "Smith",
+                    "123 High Street",
+                    "London",
+                    "SW1A 1AA",
+                    "GB"
+                )
+                {
+                    BusinessName = "Acme Corp",
+                    LineTwo = "Floor 2",
+                    Region = "Greater London"
+                },
+                new InPersonOrderShippingContact(
+                    "john.smith@example.com",
+                    "+447900123456"
+                ),
+                new InPersonOrderShippingMethod(
+                    "ipsm_01HXYZ123456789ABCDEFGH",
+                    "Next Business Day",
+                    "Delivered next business day",
+                    1500,
+                    250
+                )
+            ),
+            new InPersonOrderTracking(
+                new List<InPersonOrderTrackingItem>
+                {
+                    new InPersonOrderTrackingItem(
+                        "Royal Mail",
+                        "RM123456789GB",
+                        DateTimeOffset.FromUnixTimeSeconds(1470989538)
+                    )
+                }
+            ),
+            new Dictionary<string, string> { { "customerRef", "ORDER-2024-001" } }
+        );
+
+        internal static InPersonLocation InPersonLocation() => new InPersonLocation(
+            "iploc_01HXYZ456789012ABCDEFGH",
+            "Main Store London",
+            new InPersonLocationAddress(
+                "123 Oxford Street",
+                "London",
+                "GB",
+                "W1D 1BS",
+                "Unit 5",
+                "Greater London"
+            ),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new GeoCoordinates(51.5074, -0.1278),
+            new Dictionary<string, string> { { "storeCode", "LON-001" } }
+        );
+
+        internal static CreateInPersonLocationRequest CreateInPersonLocationRequest()
+            => new CreateInPersonLocationRequest(
+                "Main Store London",
+                new InPersonLocationAddressRequest(
+                    "123 Oxford Street",
+                    "London",
+                    "GB",
+                    "W1D 1BS"
+                )
+                {
+                    LineTwo = "Unit 5",
+                    Region = "Greater London"
+                }
+            )
+            {
+                GeoCoordinates = new GeoCoordinatesRequest(51.5074, -0.1278),
+                Metadata = new Dictionary<string, string> { { "storeCode", "LON-001" } }
+            };
+
+        internal static Terminal Terminal() => new Terminal(
+            "iptrm_01HXYZ789012345ABCDEFGH",
+            "Terminal 232",
+            new TerminalLocation("iploc_01HXYZ456789012ABCDEFGH"),
+            new TerminalDeviceDetail("BBPOS WisePOS E", "SN123456789"),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new TerminalAction(
+                TerminalActionType.Transaction,
+                TerminalActionStatus.Succeeded,
+                "ipta_01HXYZ234567890ABCDEFGH",
+                DateTimeOffset.FromUnixTimeSeconds(1470989538),
+                null,
+                new TerminalActionTransaction(
+                    TerminalTransactionType.Payment,
+                    "ps_01HXYZ012345678ABCDEFGH",
+                    new TerminalActionAmounts(1000),
+                    "GBP",
+                    new TerminalActionTransactionSettings(TerminalReceiptPrintingSource.PointOfSale),
+                    new TerminalActionReceiptDetail(
+                        new TerminalActionReceipt(TerminalReceiptPrintingStatus.Required),
+                        new TerminalActionReceipt(TerminalReceiptPrintingStatus.NotRequired)
+                    )
+                ),
+                DateTimeOffset.FromUnixTimeSeconds(1470989550)
+            ),
+            new Dictionary<string, string> { { "terminalCode", "TERM-001" } }
+        );
+
+        internal static CreateTerminalRequest CreateTerminalRequest()
+            => new CreateTerminalRequest("SN123456789", "iploc_01HXYZ456789012ABCDEFGH")
+            {
+                Name = "Terminal 232",
+                Metadata = new Dictionary<string, string> { { "terminalCode", "TERM-001" } }
+            };
+
+        internal static TerminalPaymentRequest TerminalPaymentRequest()
+            => new TerminalPaymentRequest(
+                new TerminalPaymentAmountsRequest(1000),
+                "GBP"
+            )
+            {
+                PaymentSession = new TerminalPaymentSessionRequest
+                {
+                    PlatformFee = 100,
+                    Metadata = new Dictionary<string, string> { { "sessionRef", "SES-001" } }
+                },
+                Settings = new TerminalTransactionSettingsRequest
+                {
+                    ReceiptPrintingSource = TerminalReceiptPrintingSource.Terminal
+                }
+            };
+
+        internal static TerminalRefundRequest TerminalRefundRequest()
+            => new TerminalRefundRequest(
+                new TerminalRefundPaymentSessionRequest("ps_01HXYZ012345678ABCDEFGH")
+            )
+            {
+                Amount = 500,
+                RefundPlatformFee = false,
+                Settings = new TerminalTransactionSettingsRequest
+                {
+                    ReceiptPrintingSource = TerminalReceiptPrintingSource.Terminal
+                }
+            };
     }
 }
