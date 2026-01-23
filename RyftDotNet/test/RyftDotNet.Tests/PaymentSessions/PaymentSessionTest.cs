@@ -46,7 +46,11 @@ namespace RyftDotNet.Tests.PaymentSessions
                 customerEmail: "test@ryftpay.com",
                 paymentMethod: new PaymentSessionPaymentMethod(
                     PaymentMethodType.Card,
-                    card: new PaymentSessionCard(CardScheme.Visa, "0004")
+                    card: new PaymentSessionCard(
+                        CardScheme.Visa,
+                        "0004",
+                        new CardBinDetails("Visa", "GB", CardFundingType.Credit, CardProductType.Consumer)
+                    )
                 ),
                 requiredAction: new PaymentSessionRequiredAction(
                     type: PaymentSessionRequiredActionType.Identify,
@@ -85,7 +89,11 @@ namespace RyftDotNet.Tests.PaymentSessions
                 customerEmail: "test@ryftpay.com",
                 paymentMethod: new PaymentSessionPaymentMethod(
                     PaymentMethodType.Card,
-                    card: new PaymentSessionCard(CardScheme.Visa, "0002")
+                    card: new PaymentSessionCard(
+                        CardScheme.Visa,
+                        "0002",
+                        new CardBinDetails("Visa", "GB", CardFundingType.Credit, CardProductType.Consumer)
+                    )
                 ),
                 requiredAction: new PaymentSessionRequiredAction(
                     type: PaymentSessionRequiredActionType.Challenge,

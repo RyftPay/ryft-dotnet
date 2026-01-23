@@ -9,7 +9,13 @@
     "type": "Card",
     "card": {
       "scheme": "Visa",
-      "last4": "0004"
+      "last4": "0004",
+      "binDetails": {
+        "issuer": "Visa",
+        "issuerCountry": "GB",
+        "fundingType": "Credit",
+        "productType": "Consumer"
+      }
     }
   },
   "status": "PendingAction",

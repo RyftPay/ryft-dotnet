@@ -33,7 +33,7 @@ namespace RyftDotNet.Tests.PaymentSessions.PaymentTransactions
                 new PaymentSessionPaymentMethod(
                     PaymentMethodType.Card,
                     tokenizedDetails: new PaymentMethodTokenizedDetails("pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ", true),
-                    card: new PaymentSessionCard(CardScheme.Mastercard, "4444"),
+                    card: new PaymentSessionCard(CardScheme.Mastercard, "4444", null),
                     wallet: new PaymentSessionWallet(WalletType.ApplePay),
                     billingAddress: new Address(
                         "Nathan",

@@ -9,7 +9,13 @@
     "type": "Card",
     "card": {
       "scheme": "Visa",
-      "last4": "0002"
+      "last4": "0002",
+      "binDetails": {
+        "issuer": "Visa",
+        "issuerCountry": "GB",
+        "fundingType": "Credit",
+        "productType": "Consumer"
+      }
     }
   },
   "returnUrl": "https://ryftpay.com",
