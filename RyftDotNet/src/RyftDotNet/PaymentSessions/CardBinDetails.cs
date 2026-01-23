@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace RyftDotNet.PaymentSessions
 {
-    public class CardBinDetails : IEquatable<CardBinDetails>
+    public sealed class CardBinDetails : IEquatable<CardBinDetails>
     {
         [property: JsonPropertyName("issuer")]
         public string? Issuer { get; }

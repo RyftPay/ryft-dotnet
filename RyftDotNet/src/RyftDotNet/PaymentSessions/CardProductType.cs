@@ -2,7 +2,7 @@ using RyftDotNet.Common;
 
 namespace RyftDotNet.PaymentSessions
 {
-    public class CardProductType : ConstantValue
+    public sealed class CardProductType : ConstantValue
     {
         public CardProductType(string value) : base(value) { }
 

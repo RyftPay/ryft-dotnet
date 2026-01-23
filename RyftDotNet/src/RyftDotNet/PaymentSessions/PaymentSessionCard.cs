@@ -15,7 +15,7 @@ namespace RyftDotNet.PaymentSessions
         [property: JsonPropertyName("binDetails")]
         public CardBinDetails? CardBinDetails { get; }
 
-        public PaymentSessionCard(CardScheme scheme, string last4, CardBinDetails? cardBinDetails)
+        public PaymentSessionCard(CardScheme scheme, string last4, CardBinDetails? cardBinDetails = null)
         {
             Scheme = scheme;
             Last4 = last4;
