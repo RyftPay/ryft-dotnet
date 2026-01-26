@@ -75,7 +75,9 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(TerminalActionStatus),
             typeof(TerminalReceiptPrintingSource),
             typeof(TerminalTransactionType),
-            typeof(TerminalReceiptPrintingStatus)
+            typeof(TerminalReceiptPrintingStatus),
+            typeof(CardProductType),
+            typeof(CardFundingType)
         };
 
 
@@ -396,6 +398,18 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<TerminalReceiptPrintingStatus>(
                     value => new TerminalReceiptPrintingStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(CardProductType))
+            {
+                return new ConstantValueJsonConverter<CardProductType>(
+                    value => new CardProductType(value)
+                );
+            }
+            if (typeToConvert == typeof(CardFundingType))
+            {
+                return new ConstantValueJsonConverter<CardFundingType>(
+                    value => new CardFundingType(value)
                 );
             }
             throw new NotSupportedException(
