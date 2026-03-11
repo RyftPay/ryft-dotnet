@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.0
+
+This release includes the following:
+ - Adds support for payment session 3DS configuration via `paymentSettings.threeDs`
+
 ## 1.3.0
 
 This release includes the following:
