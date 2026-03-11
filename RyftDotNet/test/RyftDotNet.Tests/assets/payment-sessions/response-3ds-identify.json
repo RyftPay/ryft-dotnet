@@ -24,6 +24,11 @@
     "id": "a value with spaces"
   },
   "refundedAmount": 0,
+  "paymentSettings": {
+    "threeDs": {
+      "challengeIndicator": "NoPreference"
+    }
+  },
   "requiredAction": {
     "type": "Identify",
     "identify": {

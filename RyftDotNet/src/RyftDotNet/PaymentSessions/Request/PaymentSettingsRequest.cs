@@ -9,5 +9,8 @@ namespace RyftDotNet.PaymentSessions.Request
 
         [property: JsonPropertyName("platform")]
         public PaymentPlatformSettingsRequest? Platform { get; set; }
+
+        [property: JsonPropertyName("threeDs")]
+        public ThreeDsSettingsRequest? ThreeDs { get; set; }
     }
 }
