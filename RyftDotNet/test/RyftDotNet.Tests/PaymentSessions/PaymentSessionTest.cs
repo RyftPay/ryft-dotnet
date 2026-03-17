@@ -52,6 +52,9 @@ namespace RyftDotNet.Tests.PaymentSessions
                         new CardBinDetails("Visa", "GB", CardFundingType.Credit, CardProductType.Consumer)
                     )
                 ),
+                paymentSettings: new PaymentSessionPaymentSettings(
+                    threeDs: new PaymentSessionThreeDsSettings("NoPreference")
+                ),
                 requiredAction: new PaymentSessionRequiredAction(
                     type: PaymentSessionRequiredActionType.Identify,
                     identify: new RequiredActionIdentify(
