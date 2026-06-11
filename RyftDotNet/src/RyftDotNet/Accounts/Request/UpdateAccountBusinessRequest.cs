@@ -39,5 +39,8 @@ namespace RyftDotNet.Accounts.Request
 
         [property: JsonPropertyName("websiteUrl")]
         public string? WebsiteUrl { get; set; }
+
+        [property: JsonPropertyName("documents")]
+        public IEnumerable<AccountDocumentRequest>? Documents { get; set; }
     }
 }
