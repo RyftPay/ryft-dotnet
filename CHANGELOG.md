@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.1
+
+This release includes the following:
+ - Adds missing `Documents` property to `UpdateAccountBusinessRequest`
+
 ## 1.4.0
 
 This release includes the following:
