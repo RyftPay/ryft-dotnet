@@ -15,7 +15,7 @@ public sealed class ConversionApiClientTest
     public async Task Client_ShouldBeAbleToCreateConversion()
     {
         var request = new CreateConversionRequest(
-            sell: new SellConversionRequest("GBP", 1000),
+            sell: new SellConversionRequest("GBP", 500),
             buy: new BuyConversionRequest("EUR"),
             termAgreement: true
         );
@@ -31,7 +31,7 @@ public sealed class ConversionApiClientTest
     public async Task Client_ShouldBeAbleToGetConversion()
     {
         var request = new CreateConversionRequest(
-            sell: new SellConversionRequest("GBP", 1000),
+            sell: new SellConversionRequest("GBP", 500),
             buy: new BuyConversionRequest("EUR"),
             termAgreement: true
         );
@@ -45,7 +45,7 @@ public sealed class ConversionApiClientTest
     public async Task Client_ShouldBeAbleToListResources()
     {
         var request = new CreateConversionRequest(
-            sell: new SellConversionRequest("GBP", 1000),
+            sell: new SellConversionRequest("GBP", 500),
             buy: new BuyConversionRequest("EUR"),
             termAgreement: true
         );
