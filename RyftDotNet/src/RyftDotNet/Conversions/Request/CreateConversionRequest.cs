@@ -1,16 +1,11 @@
-using System.Text.Json.Serialization;
-
 namespace RyftDotNet.Conversions.Request
 {
     public sealed class CreateConversionRequest
     {
-        [JsonRequired]
         public ConversionSideRequest Sell { get; }
 
-        [JsonRequired]
         public ConversionSideRequest Buy { get; }
 
-        [JsonRequired]
         public bool TermAgreement { get; }
 
         public string? FixedSide { get; set; }
