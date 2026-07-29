@@ -11,6 +11,7 @@ internal static class TestUtility
     private const string HostedAccountIdEnvVar = "RYFT_HOSTED_ACCOUNT_ID";
     private const string NonHostedAccountIdEnvVar = "RYFT_NON_HOSTED_ACCOUNT_ID";
     private const string PlatformFeeIdEnvVar = "RYFT_PLATFORM_FEE_ID";
+    private const string ConversionAccountIdEnvVar = "RYFT_CONVERSION_ACCOUNT_ID";
 
     internal static readonly string SecretApiKey =
         Environment.GetEnvironmentVariable(ApiKeyEnvVar)
@@ -39,6 +40,10 @@ internal static class TestUtility
     internal static readonly string ExistingPlatformFeeId
         = Environment.GetEnvironmentVariable(PlatformFeeIdEnvVar)
           ?? throw new TestClassException($"Missing {PlatformFeeIdEnvVar} environment variable");
+
+    internal static readonly string ExistingConversionAccountId
+        = Environment.GetEnvironmentVariable(ConversionAccountIdEnvVar)
+          ?? throw new TestClassException($"Missing {ConversionAccountIdEnvVar} environment variable");
 
     internal static string ResourcePrefix() =>
         $"ryft-dotnet_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}";

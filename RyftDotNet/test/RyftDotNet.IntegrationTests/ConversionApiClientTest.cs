@@ -1,0 +1,51 @@
+using RyftDotNet.Client;
+using RyftDotNet.Conversions;
+using RyftDotNet.Conversions.Request;
+using Shouldly;
+
+namespace RyftDotNet.IntegrationTests;
+
+public sealed class ConversionApiClientTest
+{
+    private readonly ConversionApiClient apiClient = new(new RyftApiClient(
+        requestSettings: new ClientRequestSettings { ApiKey = TestUtility.SecretApiKey }
+    ));
+
+    [Fact]
+    public async Task Client_ShouldBeAbleToGetRate()
+    {
+        var result = await apiClient.GetRates();
+        result.ShouldSatisfyAllConditions(
+            r => r.Sell.ShouldNotBeNull(),
+            r => r.Buy.ShouldNotBeNull(),
+            r => r.Rate.ShouldBeGreaterThan(0)
+        );
+    }
+
+    [Fact]
+    public async Task Client_ShouldBeAbleToListResources()
+    {
+        var result = await apiClient.ListAsync(new ListConversionsRequest { Limit = 1 });
+        result.ShouldSatisfyAllConditions(
+            r => r.Items.ShouldNotBeNull()
+        );
+    }
+
+    [Fact]
+    public async Task Client_ShouldBeAbleToCreateAndGetConversion()
+    {
+        var request = new CreateConversionRequest(
+            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
+            buy: new ConversionSideRequest("USD"),
+            termAgreement: true
+        );
+        var created = await apiClient.CreateAsync(TestUtility.ExistingConversionAccountId, request);
+        created.ShouldSatisfyAllConditions(
+            r => r.Id.ShouldNotBeNullOrEmpty(),
+            r => r.Sell.Currency.ShouldBe("GBP"),
+            r => r.Buy.Currency.ShouldBe("USD")
+        );
+        var fetched = await apiClient.GetAsync(TestUtility.ExistingConversionAccountId, created.Id);
+        fetched.Id.ShouldBe(created.Id);
+    }
+}

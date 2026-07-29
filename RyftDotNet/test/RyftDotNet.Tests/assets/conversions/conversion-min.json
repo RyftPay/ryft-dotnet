@@ -1,0 +1,11 @@
+{
+  "id": "con_01FCTS1XMKH9FF43CAFA4CXT3P",
+  "sell": {
+    "currency": "GBP"
+  },
+  "buy": {
+    "currency": "USD"
+  },
+  "status": 0,
+  "createdTimestamp": 1470989538
+}
