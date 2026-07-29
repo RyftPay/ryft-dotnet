@@ -42,7 +42,7 @@ namespace RyftDotNet.Tests.Conversions
                 .RequestAsync<Conversion>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(conversion);
-            await apiClient.CreateAsync(TestData.AccountId, request);
+            await apiClient.CreateAsync(request);
             arguments.ShouldBe(new ExpectedRequestArguments(
                 "conversions",
                 HttpMethod.Post,
@@ -61,7 +61,7 @@ namespace RyftDotNet.Tests.Conversions
             );
             var exception = new RyftApiException("uh oh");
             ryftApiClient.RequestAsync<Conversion>().ThrowsAsync(exception);
-            Func<Task<Conversion>> action = async () => await apiClient.CreateAsync(TestData.AccountId, request);
+            Func<Task<Conversion>> action = async () => await apiClient.CreateAsync(request);
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
             thrown.ShouldBeSameAs(exception);
         }
@@ -75,7 +75,7 @@ namespace RyftDotNet.Tests.Conversions
                 termAgreement: true
             );
             ryftApiClient.RequestAsync<Conversion>().ReturnsAsync(conversion);
-            var result = await apiClient.CreateAsync(TestData.AccountId, request);
+            var result = await apiClient.CreateAsync(request);
             result.ShouldBe(conversion);
         }
 
@@ -87,7 +87,7 @@ namespace RyftDotNet.Tests.Conversions
                 .RequestAsync<Conversion>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(conversion);
-            await apiClient.GetAsync(TestData.AccountId, conversion.Id);
+            await apiClient.GetAsync(conversion.Id);
             arguments.ShouldBe(new ExpectedRequestArguments(
                 $"conversions/{conversion.Id}",
                 HttpMethod.Get,
@@ -101,7 +101,7 @@ namespace RyftDotNet.Tests.Conversions
         {
             var exception = new RyftApiException("uh oh");
             ryftApiClient.RequestAsync<Conversion>().ThrowsAsync(exception);
-            Func<Task<Conversion>> action = async () => await apiClient.GetAsync(TestData.AccountId, conversion.Id);
+            Func<Task<Conversion>> action = async () => await apiClient.GetAsync(conversion.Id);
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
             thrown.ShouldBeSameAs(exception);
         }
@@ -110,7 +110,7 @@ namespace RyftDotNet.Tests.Conversions
         public async Task GetAsync_ShouldReturnResource_WhenSuccessful()
         {
             ryftApiClient.RequestAsync<Conversion>().ReturnsAsync(conversion);
-            var result = await apiClient.GetAsync(TestData.AccountId, conversion.Id);
+            var result = await apiClient.GetAsync(conversion.Id);
             result.ShouldBe(conversion);
         }
 
@@ -167,14 +167,14 @@ namespace RyftDotNet.Tests.Conversions
         }
 
         [Fact]
-        public async Task GetRates_ShouldIssueRequestWithExpectedArguments()
+        public async Task GetRatesAsync_ShouldIssueRequestWithExpectedArguments()
         {
             ExpectedRequestArguments? arguments = null;
             ryftApiClient
                 .RequestAsync<ConversionRate>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(conversionRate);
-            await apiClient.GetRates();
+            await apiClient.GetRatesAsync();
             arguments.ShouldBe(new ExpectedRequestArguments(
                 "conversions/rate",
                 HttpMethod.Get,
@@ -184,7 +184,7 @@ namespace RyftDotNet.Tests.Conversions
         }
 
         [Fact]
-        public async Task GetRates_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
+        public async Task GetRatesAsync_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
         {
             var request = new GetRateRequest { BuyCurrency = "USD", SellCurrency = "GBP", Amount = 1000 };
             ExpectedRequestArguments? arguments = null;
@@ -192,7 +192,7 @@ namespace RyftDotNet.Tests.Conversions
                 .RequestAsync<ConversionRate>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(conversionRate);
-            await apiClient.GetRates(request);
+            await apiClient.GetRatesAsync(request);
             arguments.ShouldBe(new ExpectedRequestArguments(
                 $"conversions/rate{request.ToQueryString()}",
                 HttpMethod.Get,
@@ -202,20 +202,20 @@ namespace RyftDotNet.Tests.Conversions
         }
 
         [Fact]
-        public async Task GetRates_ShouldPropagateException_WhenUnderlyingClientThrows()
+        public async Task GetRatesAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
             var exception = new RyftApiException("uh oh");
             ryftApiClient.RequestAsync<ConversionRate>().ThrowsAsync(exception);
-            Func<Task<ConversionRate>> action = async () => await apiClient.GetRates();
+            Func<Task<ConversionRate>> action = async () => await apiClient.GetRatesAsync();
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
             thrown.ShouldBeSameAs(exception);
         }
 
         [Fact]
-        public async Task GetRates_ShouldReturnResource_WhenSuccessful()
+        public async Task GetRatesAsync_ShouldReturnResource_WhenSuccessful()
         {
             ryftApiClient.RequestAsync<ConversionRate>().ReturnsAsync(conversionRate);
-            var result = await apiClient.GetRates();
+            var result = await apiClient.GetRatesAsync();
             result.ShouldBe(conversionRate);
         }
     }

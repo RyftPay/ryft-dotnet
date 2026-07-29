@@ -9,13 +9,11 @@ namespace RyftDotNet.Conversions
     public interface IConversionApiClient
     {
         Task<Conversion> CreateAsync(
-            string accountId,
             CreateConversionRequest request,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
 
         Task<Conversion> GetAsync(
-            string accountId,
             string id,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
@@ -25,7 +23,7 @@ namespace RyftDotNet.Conversions
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
 
-        Task<ConversionRate> GetRates(
+        Task<ConversionRate> GetRatesAsync(
             GetRateRequest? request = null,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);

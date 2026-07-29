@@ -19,7 +19,6 @@ namespace RyftDotNet.Conversions
         }
 
         public Task<Conversion> CreateAsync(
-            string accountId,
             CreateConversionRequest request,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)
@@ -32,7 +31,6 @@ namespace RyftDotNet.Conversions
             );
 
         public Task<Conversion> GetAsync(
-            string accountId,
             string id,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)
@@ -56,7 +54,7 @@ namespace RyftDotNet.Conversions
                 cancellationToken: cancellationToken
             );
 
-        public Task<ConversionRate> GetRates(
+        public Task<ConversionRate> GetRatesAsync(
             GetRateRequest? request = null,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)

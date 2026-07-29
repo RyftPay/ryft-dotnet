@@ -14,7 +14,7 @@ public sealed class ConversionApiClientTest
     [Fact]
     public async Task Client_ShouldBeAbleToGetRate()
     {
-        var result = await apiClient.GetRates();
+        var result = await apiClient.GetRatesAsync();
         result.ShouldSatisfyAllConditions(
             r => r.Sell.ShouldNotBeNull(),
             r => r.Buy.ShouldNotBeNull(),
@@ -39,13 +39,13 @@ public sealed class ConversionApiClientTest
             buy: new ConversionSideRequest("USD"),
             termAgreement: true
         );
-        var created = await apiClient.CreateAsync(TestUtility.ExistingConversionAccountId, request);
+        var created = await apiClient.CreateAsync(request);
         created.ShouldSatisfyAllConditions(
             r => r.Id.ShouldNotBeNullOrEmpty(),
             r => r.Sell.Currency.ShouldBe("GBP"),
             r => r.Buy.Currency.ShouldBe("USD")
         );
-        var fetched = await apiClient.GetAsync(TestUtility.ExistingConversionAccountId, created.Id);
+        var fetched = await apiClient.GetAsync(created.Id);
         fetched.Id.ShouldBe(created.Id);
     }
 }
