@@ -14,7 +14,12 @@ public sealed class ConversionApiClientTest
     [Fact]
     public async Task Client_ShouldBeAbleToGetRate()
     {
-        var result = await apiClient.GetRatesAsync();
+        var result = await apiClient.GetRatesAsync(new GetRateRequest
+        {
+            BuyCurrency = "USD",
+            SellCurrency = "GBP",
+            Amount = 1000
+        });
         result.ShouldSatisfyAllConditions(
             r => r.Sell.ShouldNotBeNull(),
             r => r.Buy.ShouldNotBeNull(),
