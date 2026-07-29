@@ -16,7 +16,7 @@ public sealed class ConversionApiClientTest
     {
         var result = await apiClient.GetRatesAsync(new GetRateRequest
         {
-            BuyCurrency = "USD",
+            BuyCurrency = "EUR",
             SellCurrency = "GBP",
             Amount = 1000
         });
