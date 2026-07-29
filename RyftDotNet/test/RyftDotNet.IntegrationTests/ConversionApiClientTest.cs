@@ -41,14 +41,14 @@ public sealed class ConversionApiClientTest
     {
         var request = new CreateConversionRequest(
             sell: new ConversionSideRequest("GBP") { Amount = 1000 },
-            buy: new ConversionSideRequest("USD"),
+            buy: new ConversionSideRequest("EUR"),
             termAgreement: true
         );
         var created = await apiClient.CreateAsync(request);
         created.ShouldSatisfyAllConditions(
             r => r.Id.ShouldNotBeNullOrEmpty(),
             r => r.Sell.Currency.ShouldBe("GBP"),
-            r => r.Buy.Currency.ShouldBe("USD")
+            r => r.Buy.Currency.ShouldBe("EUR")
         );
         var fetched = await apiClient.GetAsync(created.Id);
         fetched.Id.ShouldBe(created.Id);
