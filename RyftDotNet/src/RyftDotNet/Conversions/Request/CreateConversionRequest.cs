@@ -2,9 +2,9 @@ namespace RyftDotNet.Conversions.Request
 {
     public sealed class CreateConversionRequest
     {
-        public ConversionSideRequest Sell { get; }
+        public SellConversionRequest Sell { get; }
 
-        public ConversionSideRequest Buy { get; }
+        public BuyConversionRequest Buy { get; }
 
         public bool TermAgreement { get; }
 
@@ -13,8 +13,8 @@ namespace RyftDotNet.Conversions.Request
         public string? Reason { get; set; }
 
         public CreateConversionRequest(
-            ConversionSideRequest sell,
-            ConversionSideRequest buy,
+            SellConversionRequest sell,
+            BuyConversionRequest buy,
             bool termAgreement)
         {
             Sell = sell;

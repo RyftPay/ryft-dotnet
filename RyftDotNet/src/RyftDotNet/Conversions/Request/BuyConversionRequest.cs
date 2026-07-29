@@ -1,12 +1,10 @@
 namespace RyftDotNet.Conversions.Request
 {
-    public sealed class ConversionSideRequest
+    public sealed class BuyConversionRequest
     {
         public string Currency { get; }
 
-        public long? Amount { get; set; }
-
-        public ConversionSideRequest(string currency)
+        public BuyConversionRequest(string currency)
         {
             Currency = currency;
         }

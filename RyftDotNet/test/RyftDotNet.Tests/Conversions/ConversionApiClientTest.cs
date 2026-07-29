@@ -33,8 +33,8 @@ namespace RyftDotNet.Tests.Conversions
         public async Task CreateAsync_ShouldIssueRequestWithExpectedArguments()
         {
             var request = new CreateConversionRequest(
-                new ConversionSideRequest("GBP") { Amount = 1000 },
-                new ConversionSideRequest("USD"),
+                new SellConversionRequest("GBP", 1000),
+                new BuyConversionRequest("USD"),
                 termAgreement: true
             );
             ExpectedRequestArguments? arguments = null;
@@ -55,8 +55,8 @@ namespace RyftDotNet.Tests.Conversions
         public async Task CreateAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
             var request = new CreateConversionRequest(
-                new ConversionSideRequest("GBP") { Amount = 1000 },
-                new ConversionSideRequest("USD"),
+                new SellConversionRequest("GBP", 1000),
+                new BuyConversionRequest("USD"),
                 termAgreement: true
             );
             var exception = new RyftApiException("uh oh");
@@ -70,8 +70,8 @@ namespace RyftDotNet.Tests.Conversions
         public async Task CreateAsync_ShouldReturnResource_WhenSuccessful()
         {
             var request = new CreateConversionRequest(
-                new ConversionSideRequest("GBP") { Amount = 1000 },
-                new ConversionSideRequest("USD"),
+                new SellConversionRequest("GBP", 1000),
+                new BuyConversionRequest("USD"),
                 termAgreement: true
             );
             ryftApiClient.RequestAsync<Conversion>().ReturnsAsync(conversion);
@@ -167,14 +167,14 @@ namespace RyftDotNet.Tests.Conversions
         }
 
         [Fact]
-        public async Task GetRatesAsync_ShouldIssueRequestWithExpectedArguments()
+        public async Task GetRateAsync_ShouldIssueRequestWithExpectedArguments()
         {
             ExpectedRequestArguments? arguments = null;
             ryftApiClient
                 .RequestAsync<ConversionRate>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(conversionRate);
-            await apiClient.GetRatesAsync();
+            await apiClient.GetRateAsync();
             arguments.ShouldBe(new ExpectedRequestArguments(
                 "conversions/rate",
                 HttpMethod.Get,
@@ -184,7 +184,7 @@ namespace RyftDotNet.Tests.Conversions
         }
 
         [Fact]
-        public async Task GetRatesAsync_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
+        public async Task GetRateAsync_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
         {
             var request = new GetRateRequest { BuyCurrency = "USD", SellCurrency = "GBP", Amount = 1000 };
             ExpectedRequestArguments? arguments = null;
@@ -192,7 +192,7 @@ namespace RyftDotNet.Tests.Conversions
                 .RequestAsync<ConversionRate>()
                 .RecordInvokedArguments(args => arguments = args)
                 .ReturnsAsync(conversionRate);
-            await apiClient.GetRatesAsync(request);
+            await apiClient.GetRateAsync(request);
             arguments.ShouldBe(new ExpectedRequestArguments(
                 $"conversions/rate{request.ToQueryString()}",
                 HttpMethod.Get,
@@ -202,20 +202,20 @@ namespace RyftDotNet.Tests.Conversions
         }
 
         [Fact]
-        public async Task GetRatesAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
+        public async Task GetRateAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
             var exception = new RyftApiException("uh oh");
             ryftApiClient.RequestAsync<ConversionRate>().ThrowsAsync(exception);
-            Func<Task<ConversionRate>> action = async () => await apiClient.GetRatesAsync();
+            Func<Task<ConversionRate>> action = async () => await apiClient.GetRateAsync();
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
             thrown.ShouldBeSameAs(exception);
         }
 
         [Fact]
-        public async Task GetRatesAsync_ShouldReturnResource_WhenSuccessful()
+        public async Task GetRateAsync_ShouldReturnResource_WhenSuccessful()
         {
             ryftApiClient.RequestAsync<ConversionRate>().ReturnsAsync(conversionRate);
-            var result = await apiClient.GetRatesAsync();
+            var result = await apiClient.GetRateAsync();
             result.ShouldBe(conversionRate);
         }
     }

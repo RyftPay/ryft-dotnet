@@ -59,33 +59,20 @@ namespace RyftDotNet.Conversions
             CreatedTimestamp = createdTimestamp;
         }
 
-        public bool Equals(Conversion? other)
-        {
-            if (other is null)
-            {
-                return false;
-            }
+        public bool Equals(Conversion? other) =>
+            !(other is null) && (ReferenceEquals(this, other) || Id == other.Id
+                && Sell.Equals(other.Sell)
+                && Buy.Equals(other.Buy)
+                && Rate == other.Rate
+                && Status == other.Status
+                && Reason == other.Reason
+                && EstimatedSettlementDate == other.EstimatedSettlementDate
+                && SettledTimestamp == other.SettledTimestamp
+                && Equals(CreatedBy, other.CreatedBy)
+                && CreatedTimestamp == other.CreatedTimestamp);
 
-            if (ReferenceEquals(this, other))
-            {
-                return true;
-            }
-
-            return Id == other.Id && Sell.Equals(other.Sell)
-                                  && Buy.Equals(other.Buy)
-                                  && Rate == other.Rate
-                                  && Status == other.Status
-                                  && Reason == other.Reason
-                                  && EstimatedSettlementDate == other.EstimatedSettlementDate
-                                  && SettledTimestamp == other.SettledTimestamp
-                                  && Equals(CreatedBy, other.CreatedBy)
-                                  && CreatedTimestamp == other.CreatedTimestamp;
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return ReferenceEquals(this, obj) || obj is Conversion other && Equals(other);
-        }
+        public override bool Equals(object? obj) =>
+            ReferenceEquals(this, obj) || obj is Conversion other && Equals(other);
 
         public override int GetHashCode()
         {

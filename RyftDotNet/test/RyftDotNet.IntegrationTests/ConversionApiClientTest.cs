@@ -15,8 +15,8 @@ public sealed class ConversionApiClientTest
     public async Task Client_ShouldBeAbleToCreateConversion()
     {
         var request = new CreateConversionRequest(
-            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
-            buy: new ConversionSideRequest("EUR"),
+            sell: new SellConversionRequest("GBP", 1000),
+            buy: new BuyConversionRequest("EUR"),
             termAgreement: true
         );
         var created = await apiClient.CreateAsync(request);
@@ -31,8 +31,8 @@ public sealed class ConversionApiClientTest
     public async Task Client_ShouldBeAbleToGetConversion()
     {
         var request = new CreateConversionRequest(
-            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
-            buy: new ConversionSideRequest("EUR"),
+            sell: new SellConversionRequest("GBP", 1000),
+            buy: new BuyConversionRequest("EUR"),
             termAgreement: true
         );
         var created = await apiClient.CreateAsync(request);
@@ -45,8 +45,8 @@ public sealed class ConversionApiClientTest
     public async Task Client_ShouldBeAbleToListResources()
     {
         var request = new CreateConversionRequest(
-            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
-            buy: new ConversionSideRequest("EUR"),
+            sell: new SellConversionRequest("GBP", 1000),
+            buy: new BuyConversionRequest("EUR"),
             termAgreement: true
         );
         var created = await apiClient.CreateAsync(request);
@@ -58,7 +58,7 @@ public sealed class ConversionApiClientTest
     [Fact]
     public async Task Client_ShouldBeAbleToGetRate()
     {
-        var result = await apiClient.GetRatesAsync(new GetRateRequest
+        var result = await apiClient.GetRateAsync(new GetRateRequest
         {
             BuyCurrency = "EUR",
             SellCurrency = "GBP",

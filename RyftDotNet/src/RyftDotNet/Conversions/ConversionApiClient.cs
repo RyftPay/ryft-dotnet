@@ -9,14 +9,11 @@ namespace RyftDotNet.Conversions
 {
     public sealed class ConversionApiClient : IConversionApiClient
     {
-        private const string MoneyMovementApiSuffix = "conversions";
+        private const string ConversionsApiSuffix = "conversions";
 
         private readonly IRyftApiClient apiClient;
 
-        public ConversionApiClient(IRyftApiClient apiClient)
-        {
-            this.apiClient = apiClient;
-        }
+        public ConversionApiClient(IRyftApiClient apiClient) => this.apiClient = apiClient;
 
         public Task<Conversion> CreateAsync(
             CreateConversionRequest request,
@@ -54,7 +51,7 @@ namespace RyftDotNet.Conversions
                 cancellationToken: cancellationToken
             );
 
-        public Task<ConversionRate> GetRatesAsync(
+        public Task<ConversionRate> GetRateAsync(
             GetRateRequest? request = null,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)
@@ -67,6 +64,6 @@ namespace RyftDotNet.Conversions
             );
 
         private static string ResourcePath() =>
-            string.Join("/", MoneyMovementApiSuffix);
+            string.Join("/", ConversionsApiSuffix);
     }
 }

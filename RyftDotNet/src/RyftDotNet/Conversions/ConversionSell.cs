@@ -6,12 +6,12 @@ namespace RyftDotNet.Conversions
     public sealed class ConversionSell : IEquatable<ConversionSell>
     {
         [property: JsonPropertyName("amount")]
-        public long? Amount { get; }
+        public long Amount { get; }
 
         [property: JsonPropertyName("currency")]
         public string Currency { get; }
 
-        public ConversionSell(long? amount, string currency)
+        public ConversionSell(long amount, string currency)
         {
             Amount = amount;
             Currency = currency;
