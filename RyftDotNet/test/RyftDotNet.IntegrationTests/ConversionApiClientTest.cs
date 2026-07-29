@@ -12,6 +12,50 @@ public sealed class ConversionApiClientTest
     ));
 
     [Fact]
+    public async Task Client_ShouldBeAbleToCreateConversion()
+    {
+        var request = new CreateConversionRequest(
+            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
+            buy: new ConversionSideRequest("EUR"),
+            termAgreement: true
+        );
+        var created = await apiClient.CreateAsync(request);
+        created.ShouldSatisfyAllConditions(
+            r => r.Id.ShouldNotBeNullOrEmpty(),
+            r => r.Sell.Currency.ShouldBe("GBP"),
+            r => r.Buy.Currency.ShouldBe("EUR")
+        );
+    }
+
+    [Fact]
+    public async Task Client_ShouldBeAbleToGetConversion()
+    {
+        var request = new CreateConversionRequest(
+            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
+            buy: new ConversionSideRequest("EUR"),
+            termAgreement: true
+        );
+        var created = await apiClient.CreateAsync(request);
+
+        var fetched = await apiClient.GetAsync(created.Id);
+        fetched.Id.ShouldBe(created.Id);
+    }
+
+    [Fact]
+    public async Task Client_ShouldBeAbleToListResources()
+    {
+        var request = new CreateConversionRequest(
+            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
+            buy: new ConversionSideRequest("EUR"),
+            termAgreement: true
+        );
+        var created = await apiClient.CreateAsync(request);
+
+        var listed = await apiClient.ListAsync(new ListConversionsRequest { Limit = 1 });
+        listed.Items.ShouldContain(created);
+    }
+
+    [Fact]
     public async Task Client_ShouldBeAbleToGetRate()
     {
         var result = await apiClient.GetRatesAsync(new GetRateRequest
@@ -25,32 +69,5 @@ public sealed class ConversionApiClientTest
             r => r.Buy.ShouldNotBeNull(),
             r => r.Rate.ShouldBeGreaterThan(0)
         );
-    }
-
-    [Fact]
-    public async Task Client_ShouldBeAbleToListResources()
-    {
-        var result = await apiClient.ListAsync(new ListConversionsRequest { Limit = 1 });
-        result.ShouldSatisfyAllConditions(
-            r => r.Items.ShouldNotBeNull()
-        );
-    }
-
-    [Fact]
-    public async Task Client_ShouldBeAbleToCreateAndGetConversion()
-    {
-        var request = new CreateConversionRequest(
-            sell: new ConversionSideRequest("GBP") { Amount = 1000 },
-            buy: new ConversionSideRequest("EUR"),
-            termAgreement: true
-        );
-        var created = await apiClient.CreateAsync(request);
-        created.ShouldSatisfyAllConditions(
-            r => r.Id.ShouldNotBeNullOrEmpty(),
-            r => r.Sell.Currency.ShouldBe("GBP"),
-            r => r.Buy.Currency.ShouldBe("EUR")
-        );
-        var fetched = await apiClient.GetAsync(created.Id);
-        fetched.Id.ShouldBe(created.Id);
     }
 }
