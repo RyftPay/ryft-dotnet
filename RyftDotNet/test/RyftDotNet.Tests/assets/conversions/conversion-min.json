@@ -6,6 +6,6 @@
   "buy": {
     "currency": "USD"
   },
-  "status": 0,
+  "status": "InProgress",
   "createdTimestamp": 1470989538
 }

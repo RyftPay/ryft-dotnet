@@ -40,4 +40,5 @@ jobs:
           RYFT_NON_HOSTED_ACCOUNT_ID: ${{ secrets.RYFT_NON_HOSTED_ACCOUNT_ID }}
           RYFT_PAYMENT_METHOD_ID: ${{ secrets.RYFT_PAYMENT_METHOD_ID }}
           RYFT_PLATFORM_FEE_ID: ${{ secrets.RYFT_PLATFORM_FEE_ID }}
+          RYFT_CONVERSION_ACCOUNT_ID: ${{ secrets.RYFT_CONVERSION_ACCOUNT_ID }}
         run: ./integration-test.sh

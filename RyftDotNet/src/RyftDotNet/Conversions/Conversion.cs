@@ -94,7 +94,7 @@ namespace RyftDotNet.Conversions
             hashCode.Add(Sell);
             hashCode.Add(Buy);
             hashCode.Add(Rate);
-            hashCode.Add((int)Status);
+            hashCode.Add(Status);
             hashCode.Add(Reason);
             hashCode.Add(EstimatedSettlementDate);
             hashCode.Add(SettledTimestamp);
