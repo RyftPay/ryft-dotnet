@@ -35,7 +35,7 @@ jobs:
       - name: Package
         run: dotnet pack --no-build --configuration Release --output nuget
 
-      - name: NuGet Login
+      - name: NuGet Login (Trusted Publishing)
         uses: NuGet/login@v1
         id: login
         with:
