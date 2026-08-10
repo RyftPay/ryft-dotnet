@@ -5,6 +5,7 @@ using System.Text.Json.Serialization;
 using RyftDotNet.Accounts;
 using RyftDotNet.BalanceTransactions;
 using RyftDotNet.Common;
+using RyftDotNet.Conversions;
 using RyftDotNet.Disputes;
 using RyftDotNet.Files;
 using RyftDotNet.InPerson.Orders;
@@ -77,7 +78,8 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(TerminalTransactionType),
             typeof(TerminalReceiptPrintingStatus),
             typeof(CardProductType),
-            typeof(CardFundingType)
+            typeof(CardFundingType),
+            typeof(ConversionStatus)
         };
 
 
@@ -410,6 +412,12 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<CardFundingType>(
                     value => new CardFundingType(value)
+                );
+            }
+            if (typeToConvert == typeof(ConversionStatus))
+            {
+                return new ConstantValueJsonConverter<ConversionStatus>(
+                    value => new ConversionStatus(value)
                 );
             }
             throw new NotSupportedException(

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 
 namespace RyftDotNet.Client.Error
@@ -15,10 +16,19 @@ namespace RyftDotNet.Client.Error
             : base(message, innerException) { }
 
         public RyftApiException(RyftApiErrorResponse? apiError, HttpStatusCode httpStatusCode)
-            : base(message: $"Received an unsuccessful status code ({httpStatusCode}) from the API")
+            : base(message: BuildMessage(apiError, httpStatusCode))
         {
             ApiError = apiError;
             HttpStatusCode = httpStatusCode;
+        }
+
+        private static string BuildMessage(RyftApiErrorResponse? apiError, HttpStatusCode httpStatusCode)
+        {
+            var baseMessage = $"Received an unsuccessful status code ({httpStatusCode}) from the API";
+            var errorDetail = apiError?.Errors?.Select(e => $"{e.Code}: {e.Message}").ToList();
+            return errorDetail != null && errorDetail.Count > 0
+                ? $"{baseMessage} - {string.Join("; ", errorDetail)}"
+                : baseMessage;
         }
     }
 }
