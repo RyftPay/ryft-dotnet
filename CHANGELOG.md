@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0
+
+This release includes the following:
+ - Adds support for the Conversions API via `ConversionApiClient` - create, get, list, and get-rate
+ - FX fees are now available on the sell side of a conversion/rate quote, in addition to the buy side
+
 ## 1.4.1
 
 This release includes the following:
