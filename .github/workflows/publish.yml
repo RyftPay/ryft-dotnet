@@ -1,7 +1,16 @@
 name: publish-to-nuget
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Run the full pipeline but skip the actual push to nuget.org
+        type: boolean
+        default: false
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   build:
@@ -9,7 +18,7 @@ jobs:
     strategy:
       matrix:
         dotnet: ['8.0.x']
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,15 +30,22 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-        
+
       - name: Build
         run: dotnet build -c Release
-        
+
       - name: Unit tests
         run: ./test.sh
 
       - name: Package
         run: dotnet pack --no-build --configuration Release --output nuget
 
+      - name: NuGet Login (Trusted Publishing)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ryftpay
+      
       - name: Upload to Nuget
-        run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source "nuget.org" --skip-duplicate
+        if: ${{ !inputs.dry_run }}
+        run: dotnet nuget push nuget/*.nupkg --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source "nuget.org" --skip-duplicate
