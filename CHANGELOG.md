@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0
+
+This release includes the following:
+ - Adds support for the Conversions API (`ConversionApiClient`) - create, get, list, and get-rate
+
 ## 1.4.1
 
 This release includes the following:
