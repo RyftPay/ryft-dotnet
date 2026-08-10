@@ -1,7 +1,13 @@
 {
   "sell": {
     "amount": 1000,
-    "currency": "GBP"
+    "currency": "GBP",
+    "fees": {
+      "ryft": {
+        "amount": 8
+      },
+      "platform": null
+    }
   },
   "buy": {
     "amount": 1247,

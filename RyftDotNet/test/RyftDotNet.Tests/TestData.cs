@@ -68,7 +68,7 @@ namespace RyftDotNet.Tests
 
         internal static Conversion Conversion() => new Conversion(
             "con_01FCTS1XMKH9FF43CAFA4CXT3P",
-            new ConversionSell(1000L, "GBP"),
+            new ConversionSell(1000L, "GBP", null),
             new ConversionBuy(1247L, "USD", null),
             1.247m,
             ConversionStatus.InProgress,
@@ -80,7 +80,7 @@ namespace RyftDotNet.Tests
         );
 
         internal static ConversionRate ConversionRate() => new ConversionRate(
-            new ConversionRateSell(1000L, "GBP"),
+            new ConversionRateSell(1000L, "GBP", null),
             new ConversionRateBuy(1247L, "USD", new ConversionFees(new ConversionFee(10L), null)),
             1.247m,
             null
