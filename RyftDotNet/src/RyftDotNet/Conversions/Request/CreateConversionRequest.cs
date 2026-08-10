@@ -8,8 +8,6 @@ namespace RyftDotNet.Conversions.Request
 
         public bool TermAgreement { get; }
 
-        public string? FixedSide { get; set; }
-
         public string? Reason { get; set; }
 
         public CreateConversionRequest(
