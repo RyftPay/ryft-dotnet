@@ -14,7 +14,7 @@ namespace RyftDotNet.Tests.Conversions
             string json = File.ReadAllText("assets/conversions/conversion-min.json");
             JsonUtility.Deserialize<Conversion>(json).ShouldBe(new Conversion(
                 "con_01FCTS1XMKH9FF43CAFA4CXT3P",
-                new ConversionSell(null, "GBP", null),
+                new ConversionSell(1000L, "GBP", null),
                 new ConversionBuy(null, "USD", null),
                 null,
                 ConversionStatus.InProgress,
