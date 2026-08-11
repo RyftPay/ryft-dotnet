@@ -1,3 +1,4 @@
+using RyftDotNet.Client.Error;
 using RyftDotNet.Utility;
 
 namespace RyftDotNet.Conversions.Request
@@ -14,6 +15,14 @@ namespace RyftDotNet.Conversions.Request
 
         public GetRateRequest(string buyCurrency, string sellCurrency, long amount)
         {
+            if (string.IsNullOrWhiteSpace(buyCurrency))
+            {
+                throw new RyftArgumentException($"{nameof(buyCurrency)} is required");
+            }
+            if (string.IsNullOrWhiteSpace(sellCurrency))
+            {
+                throw new RyftArgumentException($"{nameof(sellCurrency)} is required");
+            }
             BuyCurrency = buyCurrency;
             SellCurrency = sellCurrency;
             Amount = amount;
