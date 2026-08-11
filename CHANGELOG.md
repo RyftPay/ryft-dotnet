@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.1
+
+This release includes the following:
+ - Fixes `GetRateAsync`/`GetRateRequest` to correctly require `buyCurrency`, `sellCurrency`, and `amount`, matching the API's actual requirements
+
 ## 1.5.0
 
 This release includes the following:
