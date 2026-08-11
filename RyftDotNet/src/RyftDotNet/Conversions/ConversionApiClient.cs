@@ -52,11 +52,11 @@ namespace RyftDotNet.Conversions
             );
 
         public Task<ConversionRate> GetRateAsync(
-            GetRateRequest? request = null,
+            GetRateRequest request,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)
             => apiClient.RequestAsync<ConversionRate>(
-                path: $"{ResourcePath()}/rate{request?.ToQueryString()}",
+                path: $"{ResourcePath()}/rate{request.ToQueryString()}",
                 HttpMethod.Get,
                 requestBody: null,
                 requestSettings,
