@@ -24,7 +24,7 @@ namespace RyftDotNet.Conversions
             CancellationToken cancellationToken = default);
 
         Task<ConversionRate> GetRateAsync(
-            GetRateRequest? request = null,
+            GetRateRequest request,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
     }

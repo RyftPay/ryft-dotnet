@@ -169,24 +169,7 @@ namespace RyftDotNet.Tests.Conversions
         [Fact]
         public async Task GetRateAsync_ShouldIssueRequestWithExpectedArguments()
         {
-            ExpectedRequestArguments? arguments = null;
-            ryftApiClient
-                .RequestAsync<ConversionRate>()
-                .RecordInvokedArguments(args => arguments = args)
-                .ReturnsAsync(conversionRate);
-            await apiClient.GetRateAsync();
-            arguments.ShouldBe(new ExpectedRequestArguments(
-                "conversions/rate",
-                HttpMethod.Get,
-                HttpStatusCode.OK,
-                null
-            ));
-        }
-
-        [Fact]
-        public async Task GetRateAsync_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
-        {
-            var request = new GetRateRequest { BuyCurrency = "USD", SellCurrency = "GBP", Amount = 1000 };
+            var request = new GetRateRequest(buyCurrency: "USD", sellCurrency: "GBP", amount: 1000);
             ExpectedRequestArguments? arguments = null;
             ryftApiClient
                 .RequestAsync<ConversionRate>()
@@ -204,9 +187,10 @@ namespace RyftDotNet.Tests.Conversions
         [Fact]
         public async Task GetRateAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
+            var request = new GetRateRequest(buyCurrency: "USD", sellCurrency: "GBP", amount: 1000);
             var exception = new RyftApiException("uh oh");
             ryftApiClient.RequestAsync<ConversionRate>().ThrowsAsync(exception);
-            Func<Task<ConversionRate>> action = async () => await apiClient.GetRateAsync();
+            Func<Task<ConversionRate>> action = async () => await apiClient.GetRateAsync(request);
             var thrown = await action.ShouldThrowAsync<RyftApiException>();
             thrown.ShouldBeSameAs(exception);
         }
@@ -214,8 +198,9 @@ namespace RyftDotNet.Tests.Conversions
         [Fact]
         public async Task GetRateAsync_ShouldReturnResource_WhenSuccessful()
         {
+            var request = new GetRateRequest(buyCurrency: "USD", sellCurrency: "GBP", amount: 1000);
             ryftApiClient.RequestAsync<ConversionRate>().ReturnsAsync(conversionRate);
-            var result = await apiClient.GetRateAsync();
+            var result = await apiClient.GetRateAsync(request);
             result.ShouldBe(conversionRate);
         }
     }
