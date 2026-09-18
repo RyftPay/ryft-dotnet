@@ -44,10 +44,11 @@ namespace RyftDotNet.PlatformFees
 
         public Task<PaginatedResponse<PlatformFeeRefund>> ListRefundsAsync(
             string id,
+            ListPlatformFeeRefundsRequest? request = null,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default)
             => apiClient.RequestAsync<PaginatedResponse<PlatformFeeRefund>>(
-                path: $"{ApiSuffix}/{id}/refunds",
+                path: $"{ApiSuffix}/{id}/refunds{request?.ToQueryString()}",
                 HttpMethod.Get,
                 requestBody: null,
                 requestSettings,
