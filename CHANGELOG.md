@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.0
+
+This release includes the following:
+ - Adds `Verification` to `PayoutMethod`, exposing the payee verification status, `NameOnAccount`, and `RejectionReason`
+
 ## 1.5.1
 
 This release includes the following:

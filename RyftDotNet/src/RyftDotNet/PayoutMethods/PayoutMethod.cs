@@ -40,6 +40,9 @@ namespace RyftDotNet.PayoutMethods
         [property: JsonPropertyName("bankAccount")]
         public PayoutMethodBankAccount? BankAccount { get; }
 
+        [property: JsonPropertyName("verification")]
+        public PayoutMethodVerification Verification { get; }
+
         public PayoutMethod(
             string id,
             PayoutMethodType type,
@@ -48,6 +51,7 @@ namespace RyftDotNet.PayoutMethods
             string countryCode,
             DateTimeOffset createdTimestamp,
             DateTimeOffset lastUpdatedTimestamp,
+            PayoutMethodVerification verification,
             string? displayName = null,
             string? invalidReason = null,
             PayoutMethodBankAccount? bankAccount = null)
@@ -59,6 +63,7 @@ namespace RyftDotNet.PayoutMethods
             CountryCode = countryCode;
             CreatedTimestamp = createdTimestamp;
             LastUpdatedTimestamp = lastUpdatedTimestamp;
+            Verification = verification;
             DisplayName = displayName;
             InvalidReason = invalidReason;
             BankAccount = bankAccount;
@@ -74,6 +79,7 @@ namespace RyftDotNet.PayoutMethods
                    && CountryCode == other.CountryCode
                    && CreatedTimestamp.Equals(other.CreatedTimestamp)
                    && LastUpdatedTimestamp.Equals(other.LastUpdatedTimestamp)
+                   && Equals(Verification, other.Verification)
                    && DisplayName == other.DisplayName
                    && InvalidReason == other.InvalidReason
                    && Equals(BankAccount, other.BankAccount));
@@ -91,6 +97,7 @@ namespace RyftDotNet.PayoutMethods
             hashCode.Add(CountryCode);
             hashCode.Add(CreatedTimestamp);
             hashCode.Add(LastUpdatedTimestamp);
+            hashCode.Add(Verification);
             hashCode.Add(DisplayName);
             hashCode.Add(InvalidReason);
             hashCode.Add(BankAccount);
