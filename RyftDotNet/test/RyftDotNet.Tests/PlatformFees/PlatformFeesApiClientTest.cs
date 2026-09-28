@@ -133,6 +133,30 @@ namespace RyftDotNet.Tests.PlatformFees
         }
 
         [Fact]
+        public async Task ListRefundsAsync_ShouldIssueRequestWithExpectedArguments_WhenQueryParamsProvided()
+        {
+            var request = new ListPlatformFeeRefundsRequest
+            {
+                Ascending = false,
+                Limit = 10,
+                StartsAfter = "fr_01FM9XMMV1MYDG6NGMHPDE065N_01FM9XNFXDYXAT0BJN5BBN794B"
+            };
+            ExpectedRequestArguments? arguments = null;
+            ryftApiClient.RequestAsync<PaginatedResponse<PlatformFeeRefund>>()
+                .RecordInvokedArguments(args => arguments = args)
+                .ReturnsAsync(new PaginatedResponse<PlatformFeeRefund>(
+                    new List<PlatformFeeRefund> { platformFeeRefund }
+                ));
+            await apiClient.ListRefundsAsync(platformFee.Id, request);
+            arguments.ShouldBe(new ExpectedRequestArguments(
+                $"platform-fees/{platformFee.Id}/refunds{request.ToQueryString()}",
+                HttpMethod.Get,
+                HttpStatusCode.OK,
+                null
+            ));
+        }
+
+        [Fact]
         public async Task ListRefundsAsync_ShouldPropagateException_WhenUnderlyingClientThrows()
         {
             var exception = new RyftApiException("uh oh");

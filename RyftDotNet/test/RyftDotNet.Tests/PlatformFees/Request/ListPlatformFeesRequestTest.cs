@@ -22,6 +22,23 @@ namespace RyftDotNet.Tests.PlatformFees.Request
             yield return
                 new object[]
                 {
+                    new ListPlatformFeesRequest { StartsAfter = "pf_01FCTS1XMKH9FF43CAFA4CXT3P" },
+                    "?startsAfter=pf_01FCTS1XMKH9FF43CAFA4CXT3P"
+                };
+            yield return
+                new object[]
+                {
+                    new ListPlatformFeesRequest
+                    {
+                        Limit = 2,
+                        Ascending = false,
+                        StartsAfter = "pf_01FCTS1XMKH9FF43CAFA4CXT3P"
+                    },
+                    "?ascending=false&limit=2&startsAfter=pf_01FCTS1XMKH9FF43CAFA4CXT3P"
+                };
+            yield return
+                new object[]
+                {
                     new ListPlatformFeesRequest { Limit = 2, Ascending = false }, "?ascending=false&limit=2"
                 };
         }

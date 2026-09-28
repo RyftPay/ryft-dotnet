@@ -20,6 +20,7 @@ namespace RyftDotNet.PlatformFees
 
         Task<PaginatedResponse<PlatformFeeRefund>> ListRefundsAsync(
             string id,
+            ListPlatformFeeRefundsRequest? request = null,
             ClientRequestSettings? requestSettings = null,
             CancellationToken cancellationToken = default);
     }

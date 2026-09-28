@@ -1,9 +1,15 @@
 # Changelog
 
-## 1.6.0
+## 1.7.0
 
 This release includes the following:
  - Adds `Verification` to `PayoutMethod`, exposing the payee verification status, `NameOnAccount`, and `RejectionReason`
+
+## 1.6.0
+
+This release includes the following:
+ - Adds `StartsAfter` to `ListPlatformFeesRequest`, for paging platform fees
+ - Adds `ListPlatformFeeRefundsRequest` so `ListRefundsAsync` can supply `ascending`, `limit` and `startsAfter`
 
 ## 1.5.1
 

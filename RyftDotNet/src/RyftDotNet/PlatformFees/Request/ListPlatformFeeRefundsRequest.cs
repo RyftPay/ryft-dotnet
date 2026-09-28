@@ -2,7 +2,7 @@ using RyftDotNet.Utility;
 
 namespace RyftDotNet.PlatformFees.Request
 {
-    public sealed class ListPlatformFeesRequest
+    public sealed class ListPlatformFeeRefundsRequest
     {
         public bool? Ascending { get; set; }
         public int? Limit { get; set; }
