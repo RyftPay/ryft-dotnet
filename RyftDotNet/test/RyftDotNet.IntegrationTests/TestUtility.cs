@@ -42,4 +42,22 @@ internal static class TestUtility
 
     internal static string ResourcePrefix() =>
         $"ryft-dotnet_{DateTimeOffset.UtcNow.ToUnixTimeMilliseconds()}";
+
+    // List endpoints are eventually consistent, so a just-created resource can take a moment to appear.
+    internal static async Task<T> EventuallyAsync<T>(
+        Func<Task<T>> action,
+        Func<T, bool> condition,
+        TimeSpan? timeout = null)
+    {
+        var deadline = DateTimeOffset.UtcNow + (timeout ?? TimeSpan.FromSeconds(10));
+        while (true)
+        {
+            var result = await action();
+            if (condition(result) || DateTimeOffset.UtcNow >= deadline)
+            {
+                return result;
+            }
+            await Task.Delay(TimeSpan.FromMilliseconds(500));
+        }
+    }
 }
