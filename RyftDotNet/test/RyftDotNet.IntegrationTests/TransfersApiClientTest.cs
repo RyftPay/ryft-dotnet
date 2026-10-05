@@ -28,8 +28,9 @@ public sealed class TransfersApiClientTest
         var retrieved = await apiClient.GetAsync(result.Id);
         retrieved.Id.ShouldBe(result.Id);
 
-        var listed = await apiClient.ListAsync(
-            new ListTransfersRequest { Limit = 10 }
+        var listed = await TestUtility.EventuallyAsync(
+            () => apiClient.ListAsync(new ListTransfersRequest { Limit = 10 }),
+            l => l.Items.Contains(retrieved)
         );
         listed.ShouldSatisfyAllConditions(
             l => l.Items.ShouldContain(retrieved)
