@@ -50,14 +50,12 @@ internal static class TestUtility
         TimeSpan? timeout = null)
     {
         var deadline = DateTimeOffset.UtcNow + (timeout ?? TimeSpan.FromSeconds(10));
-        while (true)
+        var result = await action();
+        while (!condition(result) && DateTimeOffset.UtcNow < deadline)
         {
-            var result = await action();
-            if (condition(result) || DateTimeOffset.UtcNow >= deadline)
-            {
-                return result;
-            }
             await Task.Delay(TimeSpan.FromMilliseconds(500));
+            result = await action();
         }
+        return result;
     }
 }
