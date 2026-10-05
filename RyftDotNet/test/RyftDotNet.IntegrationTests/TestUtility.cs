@@ -53,7 +53,7 @@ internal static class TestUtility
         var result = await action();
         while (!condition(result) && DateTimeOffset.UtcNow < deadline)
         {
-            await Task.Delay(TimeSpan.FromMilliseconds(500));
+            await Task.Delay(TimeSpan.FromMilliseconds(100));
             result = await action();
         }
         return result;
