@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.7.0
+
+This release includes the following:
+ - Adds `Policy` to `ThreeDsSettingsRequest` and `PaymentSessionThreeDsSettings`, for the payment session `paymentSettings.threeDs.policy` field
+
 ## 1.6.0
 
 This release includes the following:
