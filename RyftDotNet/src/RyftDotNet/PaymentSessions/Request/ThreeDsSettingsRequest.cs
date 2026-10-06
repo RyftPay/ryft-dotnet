@@ -9,7 +9,16 @@ namespace RyftDotNet.PaymentSessions.Request
             ChallengeIndicator = challengeIndicator;
         }
 
+        public ThreeDsSettingsRequest(string? challengeIndicator, string? policy)
+        {
+            ChallengeIndicator = challengeIndicator;
+            Policy = policy;
+        }
+
         [property: JsonPropertyName("challengeIndicator")]
-        public string ChallengeIndicator { get; set; }
+        public string? ChallengeIndicator { get; set; }
+
+        [property: JsonPropertyName("policy")]
+        public string? Policy { get; set; }
     }
 }

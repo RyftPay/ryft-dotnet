@@ -45,9 +45,10 @@ public sealed class SubscriptionsApiClientTest
         updated.ShouldSatisfyAllConditions(
             u => u.Description.ShouldBe(updatedDescription)
         );
-        var subscriptions = await apiClient.ListAsync(
-            new ListSubscriptionsRequest { Limit = 1 }
+        var subscriptions = await TestUtility.EventuallyAsync(
+            () => apiClient.ListAsync(new ListSubscriptionsRequest { Limit = 10 }),
+            listed => listed.Items.Any(item => item.Id == subscription.Id)
         );
-        subscriptions.Items.ShouldNotBeEmpty();
+        subscriptions.Items.ShouldContain(item => item.Id == subscription.Id);
     }
 }

@@ -53,7 +53,7 @@ namespace RyftDotNet.Tests.PaymentSessions
                     )
                 ),
                 paymentSettings: new PaymentSessionPaymentSettings(
-                    threeDs: new PaymentSessionThreeDsSettings("NoPreference")
+                    threeDs: new PaymentSessionThreeDsSettings("NoPreference", "Required")
                 ),
                 requiredAction: new PaymentSessionRequiredAction(
                     type: PaymentSessionRequiredActionType.Identify,

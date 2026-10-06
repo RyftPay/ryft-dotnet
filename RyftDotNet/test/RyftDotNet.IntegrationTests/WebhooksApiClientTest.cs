@@ -37,7 +37,10 @@ public sealed class WebhooksApiClientTest
         var retrieved = await apiClient.GetAsync(result.Id);
         retrieved.Id.ShouldBe(result.Id);
 
-        var listed = await apiClient.ListAsync();
+        var listed = await TestUtility.EventuallyAsync(
+            () => apiClient.ListAsync(),
+            l => l.Items.Any(item => item.Id == result.Id)
+        );
         listed.Items.ShouldContain(item => item.Id == result.Id);
 
         var deleted = await apiClient.DeleteAsync(result.Id);

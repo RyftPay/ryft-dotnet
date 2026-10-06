@@ -26,7 +26,8 @@
   "refundedAmount": 0,
   "paymentSettings": {
     "threeDs": {
-      "challengeIndicator": "NoPreference"
+      "challengeIndicator": "NoPreference",
+      "policy": "Required"
     }
   },
   "requiredAction": {
