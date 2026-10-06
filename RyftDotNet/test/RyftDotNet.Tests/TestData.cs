@@ -286,6 +286,11 @@ namespace RyftDotNet.Tests
             "GB",
             DateTimeOffset.FromUnixTimeSeconds(1470989538),
             DateTimeOffset.FromUnixTimeSeconds(1470989538),
+            new PayoutMethodVerification(
+                PayoutMethodVerificationStatus.Verified,
+                "J Smith",
+                null
+            ),
             "Primary GBP Account",
             "Account is closed",
             new PayoutMethodBankAccount(

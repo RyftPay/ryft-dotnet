@@ -2,8 +2,8 @@
   "id": "pm_01G0EYVFR02KBBVE2YWQ8AKMGJ",
   "type": "BankAccount",
   "displayName": "Primary GBP Account",
-  "status": "Invalid",
-  "invalidReason": "Account is closed",
+  "status": "Valid",
+  "invalidReason": null,
   "currency": "GBP",
   "countryCode": "GB",
   "bankAccount": {
@@ -24,8 +24,8 @@
   "createdTimestamp": 1470989538,
   "lastUpdatedTimestamp": 1470989538,
   "verification": {
-    "status": "Verified",
-    "nameOnAccount": "J Smith",
-    "rejectionReason": null
+    "status": "Rejected",
+    "nameOnAccount": null,
+    "rejectionReason": "NameMismatch"
   }
 }
