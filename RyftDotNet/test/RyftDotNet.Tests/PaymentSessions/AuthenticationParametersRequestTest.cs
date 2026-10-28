@@ -13,6 +13,13 @@ namespace RyftDotNet.Tests.PaymentSessions
                 .ShouldBe("{\"eci\":\"07\"}");
 
         [Fact]
+        public void ToJson_ShouldOmitEci_WhenEciIsNull()
+            => JsonUtility.Serialize(new AuthenticationParametersRequest
+            {
+                AuthenticationValue = "AAABBEg0VhI0VniQEjRWAAAAAAA="
+            }).ShouldBe("{\"authenticationValue\":\"AAABBEg0VhI0VniQEjRWAAAAAAA=\"}");
+
+        [Fact]
         public void ToJson_ShouldIncludeAllFields_WhenAllProvided()
             => JsonUtility.Serialize(new AuthenticationParametersRequest("05")
             {
