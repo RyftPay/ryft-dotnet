@@ -58,7 +58,7 @@ namespace RyftDotNet.PaymentSessions.Request
         public CreatePaymentSessionAttemptPaymentRequest? AttemptPayment { get; set; }
 
         /// <summary>
-        /// Used with <see cref="AttemptPayment"/>, ignored without it.
+        /// Carries the cryptogram for <see cref="CreatePaymentSessionAttemptPaymentRequest.WalletNetworkToken"/>.
         /// </summary>
         [property: JsonPropertyName("authenticationParameters")]
         public AuthenticationParametersRequest? AuthenticationParameters { get; set; }

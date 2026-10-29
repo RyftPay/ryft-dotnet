@@ -1,3 +1,4 @@
+using RyftDotNet.PaymentSessions;
 using RyftDotNet.PaymentSessions.Request;
 using RyftDotNet.Utility;
 using Shouldly;
@@ -40,15 +41,18 @@ namespace RyftDotNet.Tests.PaymentSessions
         public void ToJson_ShouldIncludeAuthenticationParameters_OnCreatePaymentSessionRequest()
             => JsonUtility.Serialize(new CreatePaymentSessionRequest(500, "GBP")
             {
-                AttemptPayment = new CreatePaymentSessionAttemptPaymentRequest(
-                    new PaymentRequestPaymentMethod("pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ")),
+                AttemptPayment = new CreatePaymentSessionAttemptPaymentRequest
+                {
+                    WalletNetworkToken = new WalletNetworkTokenRequest("4444333322221111", "10", "2030", WalletType.ApplePay)
+                },
                 AuthenticationParameters = new AuthenticationParametersRequest("05")
                 {
                     AuthenticationValue = "AAABBEg0VhI0VniQEjRWAAAAAAA="
                 }
             }).ShouldBe(
                 "{\"amount\":500,\"currency\":\"GBP\"," +
-                "\"attemptPayment\":{\"paymentMethod\":{\"id\":\"pmt_01G0EYVFR02KBBVE2YWQ8AKMGJ\"}}," +
+                "\"attemptPayment\":{\"walletNetworkToken\":{\"number\":\"4444333322221111\"," +
+                "\"expiryMonth\":\"10\",\"expiryYear\":\"2030\",\"walletType\":\"ApplePay\"}}," +
                 "\"authenticationParameters\":{\"eci\":\"05\",\"authenticationValue\":\"AAABBEg0VhI0VniQEjRWAAAAAAA=\"}}");
     }
 }
