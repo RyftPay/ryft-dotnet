@@ -3,10 +3,10 @@
 ## 1.9.0
 
 This release includes the following:
- - Adds `AuthenticationParameters` to `AttemptPaymentRequest` (secret API key only), for sending the result of 3DS performed with your own 3DS server (MPI)
+ - Adds `AuthenticationParametersRequest`, for sending the result of 3DS performed with your own 3DS server (MPI), or the cryptogram of a wallet network token. `Eci` is required with card details or a stored card and optional with a wallet network token
+ - Adds `AuthenticationParameters` to `AttemptPaymentRequest` (secret API key only), for sending your own 3DS result
  - Adds `AuthenticationParameters` to `CreatePaymentSessionRequest`, for sending the cryptogram of `AttemptPayment.WalletNetworkToken`
  - Adds `WalletNetworkTokenRequest` and `WalletNetworkToken` to `AttemptPaymentRequest` and `CreatePaymentSessionAttemptPaymentRequest`, for Apple Pay and Google Pay network tokens you have decrypted yourself
- - `AuthenticationParametersRequest.Eci` is now optional, as it may be omitted with a wallet network token
  - `CreatePaymentSessionAttemptPaymentRequest.PaymentMethod` is now optional, as `WalletNetworkToken` can be sent instead
 
 ## 1.8.0
