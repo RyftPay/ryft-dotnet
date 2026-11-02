@@ -4,10 +4,6 @@ namespace RyftDotNet.PaymentSessions.Request
 {
     public sealed class AuthenticationParametersRequest
     {
-        /// <summary>
-        /// Required with card details or a stored card.
-        /// Optional with <see cref="WalletNetworkTokenRequest"/>, send it when the wallet provides one.
-        /// </summary>
         [property: JsonPropertyName("eci")]
         public string? Eci { get; set; }
 

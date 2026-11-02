@@ -7,9 +7,6 @@ namespace RyftDotNet.PaymentSessions.Request
         [property: JsonPropertyName("paymentMethod")]
         public PaymentRequestPaymentMethod? PaymentMethod { get; set; }
 
-        /// <summary>
-        /// Requires <see cref="CreatePaymentSessionRequest.AuthenticationParameters"/>.
-        /// </summary>
         [property: JsonPropertyName("walletNetworkToken")]
         public WalletNetworkTokenRequest? WalletNetworkToken { get; set; }
 

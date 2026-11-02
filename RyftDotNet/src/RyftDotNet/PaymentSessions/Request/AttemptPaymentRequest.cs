@@ -18,9 +18,6 @@ namespace RyftDotNet.PaymentSessions.Request
         [property: JsonPropertyName("walletDetails")]
         public WalletDetailsRequest? WalletDetails { get; set; }
 
-        /// <summary>
-        /// Requires the secret API key and <see cref="AuthenticationParameters"/>.
-        /// </summary>
         [property: JsonPropertyName("walletNetworkToken")]
         public WalletNetworkTokenRequest? WalletNetworkToken { get; set; }
 
@@ -42,9 +39,6 @@ namespace RyftDotNet.PaymentSessions.Request
         [property: JsonPropertyName("threeDsRequestDetails")]
         public ThreeDsRequestDetails? ThreeDsRequestDetails { get; set; }
 
-        /// <summary>
-        /// Requires the secret API key, it is rejected with the public API key.
-        /// </summary>
         [property: JsonPropertyName("authenticationParameters")]
         public AuthenticationParametersRequest? AuthenticationParameters { get; set; }
 

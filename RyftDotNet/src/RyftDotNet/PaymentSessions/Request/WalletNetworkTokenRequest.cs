@@ -2,11 +2,6 @@ using System.Text.Json.Serialization;
 
 namespace RyftDotNet.PaymentSessions.Request
 {
-    /// <summary>
-    /// An Apple Pay or Google Pay network token you have decrypted yourself.
-    /// Requires the secret API key and <see cref="AuthenticationParametersRequest"/>, which carries the cryptogram.
-    /// A Google Pay PAN_ONLY token is not a network token and must be sent as <see cref="CardDetailsRequest"/>.
-    /// </summary>
     public sealed class WalletNetworkTokenRequest
     {
         [property: JsonPropertyName("number")]
