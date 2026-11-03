@@ -57,6 +57,9 @@ namespace RyftDotNet.PaymentSessions.Request
         [property: JsonPropertyName("attemptPayment")]
         public CreatePaymentSessionAttemptPaymentRequest? AttemptPayment { get; set; }
 
+        [property: JsonPropertyName("authenticationParameters")]
+        public AuthenticationParametersRequest? AuthenticationParameters { get; set; }
+
         [property: JsonPropertyName("paymentSettings")]
         public PaymentSettingsRequest? PaymentSettings { get; set; }
 

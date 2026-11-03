@@ -18,6 +18,9 @@ namespace RyftDotNet.PaymentSessions.Request
         [property: JsonPropertyName("walletDetails")]
         public WalletDetailsRequest? WalletDetails { get; set; }
 
+        [property: JsonPropertyName("walletNetworkToken")]
+        public WalletNetworkTokenRequest? WalletNetworkToken { get; set; }
+
         [property: JsonPropertyName("paymentMethod")]
         public AttemptPaymentPaymentMethodRequest? PaymentMethod { get; set; }
 
@@ -35,6 +38,9 @@ namespace RyftDotNet.PaymentSessions.Request
 
         [property: JsonPropertyName("threeDsRequestDetails")]
         public ThreeDsRequestDetails? ThreeDsRequestDetails { get; set; }
+
+        [property: JsonPropertyName("authenticationParameters")]
+        public AuthenticationParametersRequest? AuthenticationParameters { get; set; }
 
         public AttemptPaymentRequest(string clientSecret)
         {
