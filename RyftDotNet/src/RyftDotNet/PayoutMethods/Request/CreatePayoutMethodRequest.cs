@@ -19,6 +19,9 @@ namespace RyftDotNet.PayoutMethods.Request
         [property: JsonPropertyName("displayName")]
         public string? DisplayName { get; set; }
 
+        [property: JsonPropertyName("default")]
+        public bool? Default { get; set; }
+
         public CreatePayoutMethodRequest(
             PayoutMethodType type,
             string country,

@@ -21,6 +21,7 @@
       "region": null
     }
   },
+  "default": true,
   "createdTimestamp": 1470989538,
   "lastUpdatedTimestamp": 1470989538,
   "verification": {

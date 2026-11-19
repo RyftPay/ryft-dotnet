@@ -41,7 +41,8 @@ namespace RyftDotNet.Tests.PayoutMethods
                         "123 Test Street",
                         city: "Manchester"
                     )
-                )
+                ),
+                true
             ));
         }
 

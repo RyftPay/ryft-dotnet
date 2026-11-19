@@ -80,6 +80,7 @@ namespace RyftDotNet.Utility.JsonConverters
             typeof(CardProductType),
             typeof(CardFundingType),
             typeof(ConversionStatus),
+            typeof(ConversionTriggerType),
             typeof(PayoutMethodVerificationStatus),
             typeof(PayoutMethodVerificationRejectionReason)
         };
@@ -420,6 +421,12 @@ namespace RyftDotNet.Utility.JsonConverters
             {
                 return new ConstantValueJsonConverter<ConversionStatus>(
                     value => new ConversionStatus(value)
+                );
+            }
+            if (typeToConvert == typeof(ConversionTriggerType))
+            {
+                return new ConstantValueJsonConverter<ConversionTriggerType>(
+                    value => new ConversionTriggerType(value)
                 );
             }
             if (typeToConvert == typeof(PayoutMethodVerificationStatus))
