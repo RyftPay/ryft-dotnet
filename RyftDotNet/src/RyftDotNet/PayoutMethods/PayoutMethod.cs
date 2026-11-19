@@ -43,6 +43,9 @@ namespace RyftDotNet.PayoutMethods
         [property: JsonPropertyName("verification")]
         public PayoutMethodVerification Verification { get; }
 
+        [property: JsonPropertyName("default")]
+        public bool? Default { get; }
+
         public PayoutMethod(
             string id,
             PayoutMethodType type,
@@ -54,7 +57,8 @@ namespace RyftDotNet.PayoutMethods
             PayoutMethodVerification verification,
             string? displayName = null,
             string? invalidReason = null,
-            PayoutMethodBankAccount? bankAccount = null)
+            PayoutMethodBankAccount? bankAccount = null,
+            bool? @default = null)
         {
             Id = id;
             Type = type;
@@ -67,6 +71,7 @@ namespace RyftDotNet.PayoutMethods
             DisplayName = displayName;
             InvalidReason = invalidReason;
             BankAccount = bankAccount;
+            Default = @default;
         }
 
         public bool Equals(PayoutMethod? other)
@@ -82,7 +87,8 @@ namespace RyftDotNet.PayoutMethods
                    && Equals(Verification, other.Verification)
                    && DisplayName == other.DisplayName
                    && InvalidReason == other.InvalidReason
-                   && Equals(BankAccount, other.BankAccount));
+                   && Equals(BankAccount, other.BankAccount)
+                   && Default == other.Default);
 
         public override bool Equals(object? obj)
             => obj is PayoutMethod other && Equals(other);
@@ -101,6 +107,7 @@ namespace RyftDotNet.PayoutMethods
             hashCode.Add(DisplayName);
             hashCode.Add(InvalidReason);
             hashCode.Add(BankAccount);
+            hashCode.Add(Default);
             return hashCode.ToHashCode();
         }
     }

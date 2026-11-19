@@ -43,7 +43,8 @@ namespace RyftDotNet.Tests.Conversions
                 "2024-03-15",
                 1470989600L,
                 new ConversionCreatedBy("ac_b83f2653-06d7-44a9-a548-5825e8186004", "Test Account"),
-                1470989538L
+                1470989538L,
+                ConversionTriggerType.Manual
             ));
         }
     }

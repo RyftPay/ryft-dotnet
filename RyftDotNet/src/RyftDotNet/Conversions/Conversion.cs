@@ -20,6 +20,9 @@ namespace RyftDotNet.Conversions
         [property: JsonPropertyName("status")]
         public ConversionStatus Status { get; }
 
+        [property: JsonPropertyName("triggerType")]
+        public ConversionTriggerType? TriggerType { get; }
+
         [property: JsonPropertyName("reason")]
         public string? Reason { get; }
 
@@ -45,7 +48,8 @@ namespace RyftDotNet.Conversions
             string? estimatedSettlementDate,
             long? settledTimestamp,
             ConversionCreatedBy? createdBy,
-            long createdTimestamp)
+            long createdTimestamp,
+            ConversionTriggerType? triggerType = null)
         {
             Id = id;
             Sell = sell;
@@ -57,6 +61,7 @@ namespace RyftDotNet.Conversions
             SettledTimestamp = settledTimestamp;
             CreatedBy = createdBy;
             CreatedTimestamp = createdTimestamp;
+            TriggerType = triggerType;
         }
 
         public bool Equals(Conversion? other) =>
@@ -69,7 +74,8 @@ namespace RyftDotNet.Conversions
                 && EstimatedSettlementDate == other.EstimatedSettlementDate
                 && SettledTimestamp == other.SettledTimestamp
                 && Equals(CreatedBy, other.CreatedBy)
-                && CreatedTimestamp == other.CreatedTimestamp);
+                && CreatedTimestamp == other.CreatedTimestamp
+                && Equals(TriggerType, other.TriggerType));
 
         public override bool Equals(object? obj) =>
             ReferenceEquals(this, obj) || obj is Conversion other && Equals(other);
@@ -87,6 +93,7 @@ namespace RyftDotNet.Conversions
             hashCode.Add(SettledTimestamp);
             hashCode.Add(CreatedBy);
             hashCode.Add(CreatedTimestamp);
+            hashCode.Add(TriggerType);
             return hashCode.ToHashCode();
         }
     }
