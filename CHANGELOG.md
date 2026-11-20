@@ -3,8 +3,10 @@
 ## 1.10.0
 
 This release includes the following:
- - Adds `FailureDetail` to `Payout`, with a `Code` (`invalid_payout_method`, `invalid_account_address` or `unknown_error`; new codes may be added) and a `Description` explaining why the payout failed
+ - Adds `FailureDetail` to `Payout`, with a `Code` and a `Description` explaining why the payout failed or was returned
  - Deprecates `Payout.FailureReason`. Use `FailureDetail` instead
+ - Adds `Fee` to `Payout`, the fee charged for the payout. Null when the payout has no fee
+ - Adds `ReversalDetail` to `Payout`, with `PayoutReversed` (whether the payout's funds were returned to the balance) and `FeeReversed` (whether the fee was refunded; null when the payout has no fee)
 
 ## 1.9.0
 

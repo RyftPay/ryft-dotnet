@@ -38,7 +38,9 @@ namespace RyftDotNet.Tests.Payouts
                     PayoutScheme.Fps,
                     new FailureDetail(
                         "invalid_payout_method",
-                        "Bank account details are incorrect - please update your details and try again")
+                        "Bank account details are incorrect - please update your details and try again"),
+                    new PayoutFee(50),
+                    new PayoutReversalDetail(payoutReversed: true, feeReversed: true)
                 )
             );
         }

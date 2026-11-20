@@ -5,9 +5,6 @@ namespace RyftDotNet.Payouts
 {
     public sealed class FailureDetail : IEquatable<FailureDetail>
     {
-        /// <summary>
-        /// invalid_payout_method, invalid_account_address or unknown_error. New codes may be added.
-        /// </summary>
         [property: JsonPropertyName("code")]
         public string Code { get; }
 

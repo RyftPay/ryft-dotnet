@@ -50,6 +50,12 @@ namespace RyftDotNet.Payouts
         [property: JsonPropertyName("scheme")]
         public PayoutScheme? Scheme { get; }
 
+        [property: JsonPropertyName("fee")]
+        public PayoutFee? Fee { get; }
+
+        [property: JsonPropertyName("reversalDetail")]
+        public PayoutReversalDetail? ReversalDetail { get; }
+
 #pragma warning disable CS0618 // FailureReason is still populated and compared until it's removed
         public Payout(
             string id,
@@ -63,7 +69,9 @@ namespace RyftDotNet.Payouts
             PayoutPayoutMethod? payoutMethod = null,
             string? failureReason = null,
             PayoutScheme? scheme = null,
-            FailureDetail? failureDetail = null)
+            FailureDetail? failureDetail = null,
+            PayoutFee? fee = null,
+            PayoutReversalDetail? reversalDetail = null)
         {
             Id = id;
             Amount = amount;
@@ -77,6 +85,8 @@ namespace RyftDotNet.Payouts
             FailureReason = failureReason;
             Scheme = scheme;
             FailureDetail = failureDetail;
+            Fee = fee;
+            ReversalDetail = reversalDetail;
         }
 
         public bool Equals(Payout? other)
@@ -93,7 +103,9 @@ namespace RyftDotNet.Payouts
                    && Equals(PayoutMethod, other.PayoutMethod)
                    && FailureReason == other.FailureReason
                    && Scheme == other.Scheme
-                   && Equals(FailureDetail, other.FailureDetail));
+                   && Equals(FailureDetail, other.FailureDetail)
+                   && Equals(Fee, other.Fee)
+                   && Equals(ReversalDetail, other.ReversalDetail));
 
         public override bool Equals(object? obj)
             => obj is Payout other && Equals(other);
@@ -113,6 +125,8 @@ namespace RyftDotNet.Payouts
             hashCode.Add(FailureReason);
             hashCode.Add(Scheme);
             hashCode.Add(FailureDetail);
+            hashCode.Add(Fee);
+            hashCode.Add(ReversalDetail);
             return hashCode.ToHashCode();
         }
 #pragma warning restore CS0618
