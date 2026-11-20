@@ -2,7 +2,7 @@ namespace RyftDotNet
 {
     internal static class Constants
     {
-        internal const string Version = "1.9.0";
+        internal const string Version = "1.10.0";
         internal const string UserAgentPrefix = "ryft-dotnet/";
 
         internal const string SandboxApiUrl = "https://sandbox-api.ryftpay.com";
