@@ -41,11 +41,16 @@ namespace RyftDotNet.Payouts
         public PayoutPayoutMethod? PayoutMethod { get; }
 
         [property: JsonPropertyName("failureReason")]
+        [Obsolete("Use FailureDetail instead, which gives the specific reason the payout failed.")]
         public string? FailureReason { get; }
+
+        [property: JsonPropertyName("failureDetail")]
+        public FailureDetail? FailureDetail { get; }
 
         [property: JsonPropertyName("scheme")]
         public PayoutScheme? Scheme { get; }
 
+#pragma warning disable CS0618 // FailureReason is still populated and compared until it's removed
         public Payout(
             string id,
             long amount,
@@ -57,7 +62,8 @@ namespace RyftDotNet.Payouts
             DateTimeOffset? completedTimestamp = null,
             PayoutPayoutMethod? payoutMethod = null,
             string? failureReason = null,
-            PayoutScheme? scheme = null)
+            PayoutScheme? scheme = null,
+            FailureDetail? failureDetail = null)
         {
             Id = id;
             Amount = amount;
@@ -70,6 +76,7 @@ namespace RyftDotNet.Payouts
             PayoutMethod = payoutMethod;
             FailureReason = failureReason;
             Scheme = scheme;
+            FailureDetail = failureDetail;
         }
 
         public bool Equals(Payout? other)
@@ -85,7 +92,8 @@ namespace RyftDotNet.Payouts
                    && CompletedTimestamp.Equals(other.CompletedTimestamp)
                    && Equals(PayoutMethod, other.PayoutMethod)
                    && FailureReason == other.FailureReason
-                   && Scheme == other.Scheme);
+                   && Scheme == other.Scheme
+                   && Equals(FailureDetail, other.FailureDetail));
 
         public override bool Equals(object? obj)
             => obj is Payout other && Equals(other);
@@ -104,7 +112,9 @@ namespace RyftDotNet.Payouts
             hashCode.Add(PayoutMethod);
             hashCode.Add(FailureReason);
             hashCode.Add(Scheme);
+            hashCode.Add(FailureDetail);
             return hashCode.ToHashCode();
         }
+#pragma warning restore CS0618
     }
 }

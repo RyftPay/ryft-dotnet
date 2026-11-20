@@ -15,6 +15,10 @@
     }
   },
   "failureReason": "InvalidPayoutMethod",
+  "failureDetail": {
+    "code": "invalid_payout_method",
+    "description": "Bank account details are incorrect - please update your details and try again"
+  },
   "scheme": "Fps",
   "createdTimestamp": 1631696701,
   "scheduledTimestamp": 1631696702,

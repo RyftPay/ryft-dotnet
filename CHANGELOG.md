@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.10.0
+
+This release includes the following:
+ - Adds `FailureDetail` to `Payout`, with a `Code` (`invalid_payout_method`, `invalid_account_address` or `unknown_error`; new codes may be added) and a `Description` explaining why the payout failed
+ - Deprecates `Payout.FailureReason`. Use `FailureDetail` instead
+
 ## 1.9.0
 
 This release includes the following:

@@ -338,7 +338,10 @@ namespace RyftDotNet.Tests
                 )
             ),
             "InvalidPayoutMethod",
-            PayoutScheme.Fps
+            PayoutScheme.Fps,
+            new FailureDetail(
+                "invalid_payout_method",
+                "Bank account details are incorrect - please update your details and try again")
         );
 
         internal static CreatePayoutRequest CreatePayoutRequest() => new CreatePayoutRequest(
